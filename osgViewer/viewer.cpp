@@ -20,9 +20,8 @@ void ViewerRenderer::render() {
 }
 
 QOpenGLFramebufferObject *ViewerRenderer::createFramebufferObject(const QSize &size) {
-    qDebug() << size;
     osgViewer->getCamera()->setViewport(0, 0, size.width(), size.height());
-    osgViewer->getCamera()->setProjectionMatrixAsPerspective(45.0, (float) size.width() / size.height(), 0.1, 100);
+    osgViewer->getCamera()->setProjectionMatrixAsPerspective(30.0, (float) size.width() / size.height(), 0.1, 100);
     osgViewer->getEventQueue()->windowResize(0, 0, size.width(), size.height());
 
     QOpenGLFramebufferObjectFormat format;
@@ -32,6 +31,8 @@ QOpenGLFramebufferObject *ViewerRenderer::createFramebufferObject(const QSize &s
 
 Viewer::Viewer()
 {
+    setFlag(ItemHasContents, true);
+
     osgViewer = new osgViewer::Viewer;
     osgViewer->setUpViewerAsEmbeddedInWindow(0, 0, 1, 1);
     osgViewer->setSceneData(osgDB::readNodeFile("cow.osgt"));
@@ -43,4 +44,18 @@ Viewer::Viewer()
 QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
 {
     return new ViewerRenderer(osgViewer);
+}
+
+// Hack to flip texture node vertically
+QSGNode* Viewer::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData* nodeData)
+{
+    if (!node) {
+        node = QQuickFramebufferObject::updatePaintNode(node, nodeData);
+        QSGSimpleTextureNode* n = static_cast<QSGSimpleTextureNode*>(node);
+        if (n) {
+            n->setTextureCoordinatesTransform(QSGSimpleTextureNode::MirrorVertically);
+        }
+        return node;
+    }
+    return QQuickFramebufferObject::updatePaintNode(node, nodeData);
 }

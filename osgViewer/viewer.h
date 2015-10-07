@@ -20,7 +20,10 @@ public:
     Viewer();
     Renderer* createRenderer() const;
 
+protected:
+    QSGNode* updatePaintNode(QSGNode* node, UpdatePaintNodeData* nodeData);
+
 private:
-    osg::ref_ptr<osgViewer::Viewer> osgViewer = nullptr;
+    osg::ref_ptr<osgViewer::Viewer> osgViewer;
 
 };
