@@ -4,10 +4,10 @@
 #include <QtQuick>
 #include <osgViewer/Viewer>
 #include <osg/Texture2D>
-#include "viewer.h"
+#include "viewer_thread.h"
 
 // Based on Qt example "Scene Graph - Rendering FBOs in a thread"
-class Viewer;
+class ViewerThread;
 
 class RenderThread : public QThread
 {

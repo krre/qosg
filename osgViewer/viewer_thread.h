@@ -8,12 +8,12 @@
 
 class RenderThread;
 
-class Viewer : public QQuickItem
+class ViewerThread : public QQuickItem
 {
     Q_OBJECT
 
 public:
-    Viewer();
+    ViewerThread();
     static QList<QThread*> threads;
 
 public Q_SLOTS:

@@ -4,7 +4,7 @@ RenderThread::RenderThread(const QSize& size, osgViewer::Viewer* viewer, osg::Te
     : osgViewer(viewer),
       fboTexture(fboTexture)
 {
-    Viewer::threads << this;
+    ViewerThread::threads << this;
     m_size = QSize(size.width(), size.height());
 }
 

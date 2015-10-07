@@ -1,4 +1,4 @@
-#include "viewer.h"
+#include "viewer_thread.h"
 #include "texturenode.h"
 #include <QtQuick>
 #include <osg/ShapeDrawable>
@@ -8,14 +8,14 @@
 #include <osgViewer/Renderer>
 #include <QOpenGLContext>
 
-QList<QThread*> Viewer::threads;
+QList<QThread*> ViewerThread::threads;
 
-Viewer::Viewer()
+ViewerThread::ViewerThread()
 {
     setFlag(ItemHasContents, true);
 }
 
-void Viewer::ready()
+void ViewerThread::ready()
 {
     m_renderThread->surface = new QOffscreenSurface();
     m_renderThread->surface->setFormat(m_renderThread->context->format());
@@ -29,7 +29,7 @@ void Viewer::ready()
     update();
 }
 
-QSGNode* Viewer::updatePaintNode(QSGNode* oldNode, UpdatePaintNodeData*)
+QSGNode* ViewerThread::updatePaintNode(QSGNode* oldNode, UpdatePaintNodeData*)
 {
     TextureNode* node = static_cast<TextureNode*>(oldNode);
 
