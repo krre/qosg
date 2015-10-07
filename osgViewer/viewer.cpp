@@ -60,3 +60,28 @@ QSGNode* Viewer::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData*
     }
     return QQuickFramebufferObject::updatePaintNode(node, nodeData);
 }
+
+void Viewer::wheelEvent(QWheelEvent *event)
+{
+    qDebug() << "wheelEvent" << event;
+}
+
+void Viewer::mouseDoubleClickEvent(QMouseEvent* event)
+{
+    qDebug() << "mouseDoubleClickEvent" << event;
+}
+
+void Viewer::mouseMoveEvent(QMouseEvent *event)
+{
+    qDebug() << "mouseMoveEvent" << event;
+}
+
+void Viewer::mousePressEvent(QMouseEvent *event)
+{
+    qDebug() << "mousePressEvent" << event;
+}
+
+void Viewer::mouseReleaseEvent(QMouseEvent *event)
+{
+    qDebug() << "mouseReleaseEvent" << event;
+}
