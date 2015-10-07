@@ -29,6 +29,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent* event) override;
 
 private:
+    osgGA::GUIEventAdapter::MouseButtonMask mouseButtonMask(QMouseEvent *event);
     osg::ref_ptr<osgViewer::Viewer> osgViewer;
 
 };

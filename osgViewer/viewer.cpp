@@ -71,6 +71,18 @@ void Viewer::wheelEvent(QWheelEvent *event)
 void Viewer::mouseDoubleClickEvent(QMouseEvent* event)
 {
     qDebug() << "mouseDoubleClickEvent" << event;
+    osgGA::GUIEventAdapter::MouseButtonMask button;
+
+    if ( Qt::LeftButton == event->button() )
+        button = osgGA::GUIEventAdapter::LEFT_MOUSE_BUTTON;
+    else if ( Qt::RightButton == event->button() )
+        button = osgGA::GUIEventAdapter::RIGHT_MOUSE_BUTTON;
+    else if ( Qt::MidButton == event->button() )
+        button = osgGA::GUIEventAdapter::MIDDLE_MOUSE_BUTTON;
+    else
+        return;
+
+    osgViewer->getEventQueue()->mouseDoubleButtonPress((float)event->x(), (float)event->y(), button);
 }
 
 void Viewer::mouseMoveEvent(QMouseEvent *event)
@@ -81,10 +93,23 @@ void Viewer::mouseMoveEvent(QMouseEvent *event)
 
 void Viewer::mousePressEvent(QMouseEvent *event)
 {
-    qDebug() << "mousePressEvent" << event;
+//    qDebug() << "mousePressEvent" << event;
+    osgViewer->getEventQueue()->mouseButtonPress((float)event->x(), (float)event->y(), mouseButtonMask(event));
 }
 
 void Viewer::mouseReleaseEvent(QMouseEvent *event)
 {
-    qDebug() << "mouseReleaseEvent" << event;
+//    qDebug() << "mouseReleaseEvent" << event;
+    osgViewer->getEventQueue()->mouseButtonRelease((float)event->x(), (float)event->y(), mouseButtonMask(event));
+}
+
+osgGA::GUIEventAdapter::MouseButtonMask Viewer::mouseButtonMask(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton) {
+        return osgGA::GUIEventAdapter::LEFT_MOUSE_BUTTON;
+    } else if (event->button() == Qt::RightButton) {
+        return osgGA::GUIEventAdapter::RIGHT_MOUSE_BUTTON;
+    } else {
+        return osgGA::GUIEventAdapter::MIDDLE_MOUSE_BUTTON;
+    }
 }
