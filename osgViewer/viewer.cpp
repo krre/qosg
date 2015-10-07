@@ -75,7 +75,8 @@ void Viewer::mouseDoubleClickEvent(QMouseEvent* event)
 
 void Viewer::mouseMoveEvent(QMouseEvent *event)
 {
-    qDebug() << "mouseMoveEvent" << event;
+//    qDebug() << "mouseMoveEvent" << event;
+    osgViewer->getEventQueue()->mouseMotion((float)event->x(), (float)event->y());
 }
 
 void Viewer::mousePressEvent(QMouseEvent *event)
