@@ -17,13 +17,12 @@ void ViewerRenderer::render() {
     qDebug() << "render";
     QOpenGLContext::currentContext()->functions()->glUseProgram(0);
     osgViewer->frame();
-//    update();
 }
 
 QOpenGLFramebufferObject *ViewerRenderer::createFramebufferObject(const QSize &size) {
     qDebug() << size;
     osgViewer->getCamera()->setViewport(0, 0, size.width(), size.height());
-    osgViewer->getCamera()->setProjectionMatrixAsPerspective(45.0, size.width() / size.height(), 0.1, 100);
+    osgViewer->getCamera()->setProjectionMatrixAsPerspective(45.0, (float) size.width() / size.height(), 0.1, 100);
     osgViewer->getEventQueue()->windowResize(0, 0, size.width(), size.height());
 
     QOpenGLFramebufferObjectFormat format;
@@ -33,8 +32,6 @@ QOpenGLFramebufferObject *ViewerRenderer::createFramebufferObject(const QSize &s
 
 Viewer::Viewer()
 {
-//    setTextureFollowsItemSize(false);
-
     osgViewer = new osgViewer::Viewer;
     osgViewer->setUpViewerAsEmbeddedInWindow(0, 0, 1, 1);
     osgViewer->setSceneData(osgDB::readNodeFile("cow.osgt"));
