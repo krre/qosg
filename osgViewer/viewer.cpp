@@ -33,6 +33,7 @@ QOpenGLFramebufferObject *ViewerRenderer::createFramebufferObject(const QSize &s
 Viewer::Viewer()
 {
     setFlag(ItemHasContents, true);
+    setAcceptedMouseButtons(Qt::AllButtons);
 
     osgViewer = new osgViewer::Viewer;
     osgViewer->setUpViewerAsEmbeddedInWindow(0, 0, 1, 1);
