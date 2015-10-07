@@ -64,7 +64,8 @@ QSGNode* Viewer::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData*
 
 void Viewer::wheelEvent(QWheelEvent *event)
 {
-    qDebug() << "wheelEvent" << event;
+    osgViewer->getEventQueue()->mouseScroll(event->delta() < 0 ? osgGA::GUIEventAdapter::SCROLL_UP : osgGA::GUIEventAdapter::SCROLL_DOWN);
+    update();
 }
 
 void Viewer::mouseDoubleClickEvent(QMouseEvent* event)
