@@ -22,7 +22,6 @@ void ViewerRenderer::render() {
 
 QOpenGLFramebufferObject *ViewerRenderer::createFramebufferObject(const QSize &size) {
     qDebug() << size;
-    osgViewer->setUpViewerAsEmbeddedInWindow(0, 0, size.width(), size.height());
     osgViewer->getCamera()->setViewport(0, 0, size.width(), size.height());
     osgViewer->getCamera()->setProjectionMatrixAsPerspective(45.0, size.width() / size.height(), 0.1, 100);
     osgViewer->getEventQueue()->windowResize(0, 0, size.width(), size.height());
@@ -34,12 +33,14 @@ QOpenGLFramebufferObject *ViewerRenderer::createFramebufferObject(const QSize &s
 
 Viewer::Viewer()
 {
+//    setTextureFollowsItemSize(false);
+
     osgViewer = new osgViewer::Viewer;
+    osgViewer->setUpViewerAsEmbeddedInWindow(0, 0, 1, 1);
     osgViewer->setSceneData(osgDB::readNodeFile("cow.osgt"));
     osgViewer->setCameraManipulator(new osgGA::MultiTouchTrackballManipulator);
-
     osgViewer->getCamera()->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-//    osgViewer->getCamera()->setClearColor(osg::Vec4(0.5f, 0.5f, 0.5f, 1.0f));
+    osgViewer->getCamera()->setClearColor(osg::Vec4(0.5f, 0.5f, 0.5f, 1.0f));
 }
 
 QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
