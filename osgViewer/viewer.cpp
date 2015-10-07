@@ -3,18 +3,17 @@
 #include <QtGui/QOpenGLContext>
 #include <QtGui/QOpenGLFunctions>
 #include <QtQuick/QQuickWindow>
-#include <qsgsimpletexturenode.h>
+#include <QtQuick/QSGSimpleTextureNode>
 #include <osgDB/ReadFile>
-#include <osgGA/MultiTouchTrackballManipulator>
 #include <osg/Camera>
+#include <osgGA/TrackballManipulator>
 
 ViewerRenderer::ViewerRenderer(osg::ref_ptr<osgViewer::Viewer> osgViewer) : osgViewer(osgViewer)
 {
-
 }
 
 void ViewerRenderer::render() {
-    qDebug() << "render";
+//    qDebug() << "render";
     QOpenGLContext::currentContext()->functions()->glUseProgram(0);
     osgViewer->frame();
 }
@@ -38,9 +37,9 @@ Viewer::Viewer()
     osgViewer = new osgViewer::Viewer;
     osgViewer->setUpViewerAsEmbeddedInWindow(0, 0, 1, 1);
     osgViewer->setSceneData(osgDB::readNodeFile("cow.osgt"));
-    osgViewer->setCameraManipulator(new osgGA::MultiTouchTrackballManipulator);
     osgViewer->getCamera()->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     osgViewer->getCamera()->setClearColor(osg::Vec4(0.5f, 0.5f, 0.5f, 1.0f));
+    osgViewer->setCameraManipulator(new osgGA::TrackballManipulator);
 }
 
 QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
@@ -70,37 +69,30 @@ void Viewer::wheelEvent(QWheelEvent *event)
 
 void Viewer::mouseDoubleClickEvent(QMouseEvent* event)
 {
-    qDebug() << "mouseDoubleClickEvent" << event;
-    osgGA::GUIEventAdapter::MouseButtonMask button;
-
-    if ( Qt::LeftButton == event->button() )
-        button = osgGA::GUIEventAdapter::LEFT_MOUSE_BUTTON;
-    else if ( Qt::RightButton == event->button() )
-        button = osgGA::GUIEventAdapter::RIGHT_MOUSE_BUTTON;
-    else if ( Qt::MidButton == event->button() )
-        button = osgGA::GUIEventAdapter::MIDDLE_MOUSE_BUTTON;
-    else
-        return;
-
-    osgViewer->getEventQueue()->mouseDoubleButtonPress((float)event->x(), (float)event->y(), button);
+//    qDebug() << "mouseDoubleClickEvent" << event;
+    osgViewer->getEventQueue()->mouseDoubleButtonPress((float)event->x(), (float)event->y(), mouseButtonMask(event));
+    update();
 }
 
 void Viewer::mouseMoveEvent(QMouseEvent *event)
 {
 //    qDebug() << "mouseMoveEvent" << event;
     osgViewer->getEventQueue()->mouseMotion((float)event->x(), (float)event->y());
+    update();
 }
 
 void Viewer::mousePressEvent(QMouseEvent *event)
 {
 //    qDebug() << "mousePressEvent" << event;
     osgViewer->getEventQueue()->mouseButtonPress((float)event->x(), (float)event->y(), mouseButtonMask(event));
+    update();
 }
 
 void Viewer::mouseReleaseEvent(QMouseEvent *event)
 {
 //    qDebug() << "mouseReleaseEvent" << event;
     osgViewer->getEventQueue()->mouseButtonRelease((float)event->x(), (float)event->y(), mouseButtonMask(event));
+    update();
 }
 
 osgGA::GUIEventAdapter::MouseButtonMask Viewer::mouseButtonMask(QMouseEvent *event)
