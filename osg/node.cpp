@@ -14,4 +14,3 @@ void Node::classBegin()
     node = static_cast<osg::Node*>(obj);
     Object::classBegin();
 }
-
