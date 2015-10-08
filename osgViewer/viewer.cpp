@@ -13,7 +13,7 @@ ViewerRenderer::ViewerRenderer(osg::ref_ptr<osgViewer::Viewer> osgViewer) : osgV
 }
 
 void ViewerRenderer::render() {
-    qDebug() << "render";
+//    qDebug() << "render";
     QOpenGLContext::currentContext()->functions()->glUseProgram(0);
     osgViewer->frame();
 }
@@ -40,7 +40,9 @@ Viewer::Viewer()
     osgViewer->setSceneData(osgDB::readNodeFile("cow.osgt"));
     osgViewer->getCamera()->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     osgViewer->getCamera()->setClearColor(osg::Vec4(0.5f, 0.5f, 0.5f, 1.0f));
-    osgViewer->setCameraManipulator(new osgGA::TrackballManipulator);
+    auto manipulator = new osgGA::TrackballManipulator;
+    manipulator->setAllowThrow(false);
+    osgViewer->setCameraManipulator(manipulator);
 }
 
 QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
