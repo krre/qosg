@@ -27,7 +27,7 @@ void Geode::append(QQmlListProperty<Drawable>* list, Drawable* drawable)
 Drawable* Geode::at(QQmlListProperty<Drawable>* list, int index)
 {
     Geode* self = static_cast<Geode*>(list->object);
-    return self->geode->getDrawable(index);
+//    return self->geode->getDrawable(index);
 }
 
 int Geode::count(QQmlListProperty<Drawable>* list)
