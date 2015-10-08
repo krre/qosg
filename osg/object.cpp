@@ -7,6 +7,11 @@ Object::Object()
 
 void Object::classBegin()
 {
-    qDebug() << "classBegin";
+    qDebug() << "classBegin Object";
+}
+
+void Object::componentComplete()
+{
+
 }
 

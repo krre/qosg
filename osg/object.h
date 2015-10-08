@@ -3,16 +3,17 @@
 #include <QtQml>
 #include <osg/Object>
 
-class Object : public QObject, QQmlParserStatus
+class Object : public QObject, public QQmlParserStatus
 {
     Q_OBJECT
     Q_INTERFACES(QQmlParserStatus)
 
 public:
     Object();
+    void classBegin() override;
+    void componentComplete() override;
 
 protected:
-    void classBegin();
     osg::Object* obj = nullptr;
 };
 
