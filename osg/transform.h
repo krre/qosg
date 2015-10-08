@@ -10,6 +10,7 @@ class Transform : public Group
 public:
     Transform();
     void classBegin() override;
+    osg::Transform* instance() { return transform; }
 
 private:
     osg::Transform* transform;

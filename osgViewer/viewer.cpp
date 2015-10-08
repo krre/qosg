@@ -56,7 +56,7 @@ void Viewer::setSceneData(Node* sceneData)
         return;
 
     this->sceneData = sceneData;
-    osgViewer->setSceneData(sceneData->node);
+    osgViewer->setSceneData(sceneData->instance());
     emit sceneDataChanged(sceneData);
 }
 

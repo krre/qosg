@@ -10,6 +10,7 @@ class Group : public Node
 public:
     Group();
     void classBegin() override;
+    osg::Group* instance() { return group; }
 
 private:
     osg::Group* group;

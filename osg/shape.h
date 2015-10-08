@@ -10,6 +10,7 @@ class Shape : public Object
 public:
     Shape();
     void classBegin() override;
+    osg::Shape* instance() { return shape; }
 
 private:
     osg::Shape* shape;

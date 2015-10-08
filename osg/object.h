@@ -12,6 +12,7 @@ public:
     Object();
     void classBegin() override;
     void componentComplete() override;
+    osg::Object* instance() { return obj; }
 
 protected:
     osg::Object* obj = nullptr;

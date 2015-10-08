@@ -10,6 +10,9 @@ class Node : public Object
 public:
     Node();
     void classBegin() override;
+    osg::Node* instance() { return node; }
+
+private:
     osg::Node* node;
 };
 

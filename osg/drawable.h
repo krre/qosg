@@ -10,6 +10,7 @@ class Drawable : public Object
 public:
     Drawable();
     void classBegin() override;
+    osg::Drawable* instance() { return drawable; }
 
 private:
     osg::Drawable* drawable;
