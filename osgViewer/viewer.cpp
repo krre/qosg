@@ -8,12 +8,11 @@
 #include <osg/Camera>
 #include <osgGA/TrackballManipulator>
 
-ViewerRenderer::ViewerRenderer(osg::ref_ptr<osgViewer::Viewer> osgViewer) : osgViewer(osgViewer)
+ViewerRenderer::ViewerRenderer(osgViewer::Viewer* osgViewer) : osgViewer(osgViewer)
 {
 }
 
 void ViewerRenderer::render() {
-//    qDebug() << "render";
     QOpenGLContext::currentContext()->functions()->glUseProgram(0);
     osgViewer->frame();
 }
@@ -34,15 +33,16 @@ Viewer::Viewer()
     setFlag(ItemHasContents, true);
     setAcceptedMouseButtons(Qt::AllButtons);
 
-    osgViewer = new osgViewer::Viewer;
-    osgViewer->setThreadingModel(osgViewer::ViewerBase::SingleThreaded);
-    osgViewer->setUpViewerAsEmbeddedInWindow(0, 0, 1, 1);
-    osgViewer->setSceneData(osgDB::readNodeFile("cow.osgt"));
-    osgViewer->getCamera()->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    osgViewer->getCamera()->setClearColor(osg::Vec4(0.5f, 0.5f, 0.5f, 1.0f));
+    setThreadingModel(osgViewer::ViewerBase::SingleThreaded);
+    setUpViewerAsEmbeddedInWindow(0, 0, 1, 1);
+    osgViewer::Viewer::setSceneData(osgDB::readNodeFile("cow.osgt"));
+    getCamera()->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    getCamera()->setClearColor(osg::Vec4(0.5f, 0.5f, 0.5f, 1.0f));
     auto manipulator = new osgGA::TrackballManipulator;
     manipulator->setAllowThrow(false);
-    osgViewer->setCameraManipulator(manipulator);
+    setCameraManipulator(manipulator);
+
+    osgViewer = this;
 }
 
 QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
@@ -52,8 +52,8 @@ QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
 
 void Viewer::setSceneData(Node* sceneData)
 {
-    if (static_cast<osg::Node*>(osgViewer->getSceneData()) == sceneData) return;
-    osgViewer->setSceneData(static_cast<osg::Node*>(sceneData));
+    if (static_cast<osg::Node*>(getSceneData()) == sceneData) return;
+    osgViewer::Viewer::setSceneData(static_cast<osg::Node*>(sceneData));
     emit sceneDataChanged(sceneData);
 }
 
@@ -73,31 +73,31 @@ QSGNode* Viewer::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData*
 
 void Viewer::wheelEvent(QWheelEvent *event)
 {
-    osgViewer->getEventQueue()->mouseScroll(event->delta() < 0 ? osgGA::GUIEventAdapter::SCROLL_UP : osgGA::GUIEventAdapter::SCROLL_DOWN);
+    getEventQueue()->mouseScroll(event->delta() < 0 ? osgGA::GUIEventAdapter::SCROLL_UP : osgGA::GUIEventAdapter::SCROLL_DOWN);
     update();
 }
 
 void Viewer::mouseDoubleClickEvent(QMouseEvent* event)
 {
-    osgViewer->getEventQueue()->mouseDoubleButtonPress((float)event->x(), (float)event->y(), mouseButtonMask(event));
+    getEventQueue()->mouseDoubleButtonPress((float)event->x(), (float)event->y(), mouseButtonMask(event));
     update();
 }
 
 void Viewer::mouseMoveEvent(QMouseEvent *event)
 {
-    osgViewer->getEventQueue()->mouseMotion(event->localPos().x(), event->localPos().y());
+    getEventQueue()->mouseMotion(event->localPos().x(), event->localPos().y());
     update();
 }
 
 void Viewer::mousePressEvent(QMouseEvent *event)
 {
-    osgViewer->getEventQueue()->mouseButtonPress(event->localPos().x(), event->localPos().y(), mouseButtonMask(event));
+    getEventQueue()->mouseButtonPress(event->localPos().x(), event->localPos().y(), mouseButtonMask(event));
     update();
 }
 
 void Viewer::mouseReleaseEvent(QMouseEvent *event)
 {
-    osgViewer->getEventQueue()->mouseButtonRelease(event->localPos().x(), event->localPos().y(), mouseButtonMask(event));
+    getEventQueue()->mouseButtonRelease(event->localPos().x(), event->localPos().y(), mouseButtonMask(event));
     update();
 }
 
