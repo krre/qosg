@@ -14,4 +14,3 @@ void Group::classBegin()
     group = static_cast<osg::Group*>(obj);
     Node::classBegin();
 }
-
