@@ -1,17 +1,11 @@
 #pragma once
-#include <QtCore>
-#include "node.h"
 #include <osg/Group>
+#include <QObject>
 
-class Group : public Node
+class Group : public QObject, public osg::Group
 {
     Q_OBJECT
 
 public:
-    Group();
-    void classBegin() override;
-    osg::Group* instance() { return group; }
-
-private:
-    osg::Group* group;
+    Group() {}
 };

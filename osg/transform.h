@@ -1,17 +1,11 @@
 #pragma once
-#include <QtCore>
-#include "group.h"
 #include <osg/Transform>
+#include <QObject>
 
-class Transform : public Group
+class Transform : public QObject, public osg::Transform
 {
     Q_OBJECT
 
 public:
-    Transform();
-    void classBegin() override;
-    osg::Transform* instance() { return transform; }
-
-private:
-    osg::Transform* transform;
+    Transform() {}
 };

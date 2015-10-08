@@ -52,11 +52,8 @@ QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
 
 void Viewer::setSceneData(Node* sceneData)
 {
-    if (sceneData == this->sceneData)
-        return;
-
-    this->sceneData = sceneData;
-    osgViewer->setSceneData(sceneData->instance());
+    if (static_cast<osg::Node*>(osgViewer->getSceneData()) == sceneData) return;
+    osgViewer->setSceneData(static_cast<osg::Node*>(sceneData));
     emit sceneDataChanged(sceneData);
 }
 

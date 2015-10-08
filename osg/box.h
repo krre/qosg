@@ -1,17 +1,11 @@
 #pragma once
-#include <QtCore>
-#include "shape.h"
 #include <osg/Shape>
+#include <QObject>
 
-class Box : public Shape
+class Box : public QObject, public osg::Box
 {
     Q_OBJECT
 
 public:
-    Box();
-    void classBegin() override;
-    osg::Box* instance() { return box; }
-
-private:
-    osg::Box* box;
+    Box() {}
 };

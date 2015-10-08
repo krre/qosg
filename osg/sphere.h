@@ -8,7 +8,7 @@ class Sphere : public QObject, public osg::Sphere
     Q_PROPERTY(float radius READ getRadius WRITE setRadius NOTIFY radiusChanged)
 
 public:
-    Sphere();
+    Sphere() {}
 
     void setRadius(float radius);
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <osgViewer/Viewer>
+#include <osg/Node>
 #include <QtQuick/QQuickFramebufferObject>
 #include "../osg/node.h"
 
@@ -23,7 +24,7 @@ public:
     Viewer();
     Renderer* createRenderer() const;
 
-    Node* getSceneData() const { return sceneData; }
+    Node* getSceneData() const { return static_cast<Node*>(osgViewer->getSceneData()); }
     void setSceneData(Node* sceneData);
 
 signals:
@@ -41,5 +42,4 @@ protected:
 private:
     osgGA::GUIEventAdapter::MouseButtonMask mouseButtonMask(QMouseEvent *event);
     osg::ref_ptr<osgViewer::Viewer> osgViewer;
-    Node* sceneData;
 };

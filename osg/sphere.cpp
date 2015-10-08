@@ -1,10 +1,5 @@
 #include "sphere.h"
 
-Sphere::Sphere()
-{
-
-}
-
 void Sphere::setRadius(float radius)
 {
     if (getRadius() == radius) return;

@@ -1,17 +1,11 @@
 #pragma once
-#include <QtCore>
-#include "object.h"
 #include <osg/Node>
+#include <QObject>
 
-class Node : public Object
+class Node : public QObject, public osg::Node
 {
     Q_OBJECT
 
 public:
-    Node();
-    void classBegin() override;
-    osg::Node* instance() { return node; }
-
-private:
-    osg::Node* node;
+    Node() {}
 };
