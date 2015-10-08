@@ -15,4 +15,3 @@ public:
 private:
     osg::Node* node;
 };
-
