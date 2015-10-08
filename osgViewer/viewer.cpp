@@ -50,6 +50,16 @@ QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
     return new ViewerRenderer(osgViewer);
 }
 
+void Viewer::setSceneData(Node* sceneData)
+{
+    if (sceneData == this->sceneData)
+        return;
+
+    this->sceneData = sceneData;
+    osgViewer->setSceneData(sceneData->node);
+    emit sceneDataChanged(sceneData);
+}
+
 // Hack to flip texture node vertically
 QSGNode* Viewer::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData* nodeData)
 {

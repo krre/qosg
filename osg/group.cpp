@@ -7,7 +7,6 @@ Group::Group()
 
 void Group::classBegin()
 {
-    qDebug() << "classBegin Group";
     if (obj == nullptr) {
         obj = new osg::Group;
     }

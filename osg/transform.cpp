@@ -7,7 +7,6 @@ Transform::Transform()
 
 void Transform::classBegin()
 {
-    qDebug() << "classBegin Transform";
     if (obj == nullptr) {
         obj = new osg::Transform;
     }

@@ -7,7 +7,6 @@ Box::Box()
 
 void Box::classBegin()
 {
-    qDebug() << "classBegin Box";
     if (obj == nullptr) {
         obj = new osg::Box;
     }

@@ -10,8 +10,6 @@ class Node : public Object
 public:
     Node();
     void classBegin() override;
-
-private:
     osg::Node* node;
 };
 

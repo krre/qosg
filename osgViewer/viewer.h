@@ -1,6 +1,7 @@
 #pragma once
 #include <osgViewer/Viewer>
 #include <QtQuick/QQuickFramebufferObject>
+#include "../osg/node.h"
 
 class ViewerRenderer : public QQuickFramebufferObject::Renderer
 {
@@ -16,10 +17,17 @@ private:
 class Viewer : public QQuickFramebufferObject
 {
     Q_OBJECT
+    Q_PROPERTY(Node* sceneData READ getSceneData WRITE setSceneData NOTIFY sceneDataChanged)
 
 public:
     Viewer();
     Renderer* createRenderer() const;
+
+    Node* getSceneData() const { return sceneData; }
+    void setSceneData(Node* sceneData);
+
+signals:
+    void sceneDataChanged(Node* sceneData);
 
 protected:
     QSGNode* updatePaintNode(QSGNode* node, UpdatePaintNodeData* nodeData) override;
@@ -33,4 +41,5 @@ protected:
 private:
     osgGA::GUIEventAdapter::MouseButtonMask mouseButtonMask(QMouseEvent *event);
     osg::ref_ptr<osgViewer::Viewer> osgViewer;
+    Node* sceneData;
 };
