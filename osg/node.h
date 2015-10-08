@@ -12,6 +12,6 @@ public:
     void classBegin();
 
 private:
-    osg::Node* node = nullptr;
+    osg::Node* node;
 };
 

@@ -12,5 +12,6 @@ void Node::classBegin()
         obj = new osg::Node;
     }
     node = static_cast<osg::Node*>(obj);
+    Object::classBegin();
 }
 
