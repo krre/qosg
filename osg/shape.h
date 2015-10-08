@@ -1,16 +1,16 @@
 #pragma once
 #include <QtCore>
 #include "object.h"
-#include <osg/Drawable>
+#include <osg/Shape>
 
-class Drawable : public Object
+class Shape : public Object
 {
     Q_OBJECT
 
 public:
-    Drawable();
+    Shape();
     void classBegin() override;
 
 private:
-    osg::Drawable* drawable;
+    osg::Shape* shape;
 };
