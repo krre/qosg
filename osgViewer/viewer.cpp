@@ -13,7 +13,7 @@ ViewerRenderer::ViewerRenderer(osg::ref_ptr<osgViewer::Viewer> osgViewer) : osgV
 }
 
 void ViewerRenderer::render() {
-//    qDebug() << "render";
+    qDebug() << "render";
     QOpenGLContext::currentContext()->functions()->glUseProgram(0);
     osgViewer->frame();
 }
@@ -35,6 +35,7 @@ Viewer::Viewer()
     setAcceptedMouseButtons(Qt::AllButtons);
 
     osgViewer = new osgViewer::Viewer;
+    osgViewer->setThreadingModel(osgViewer::ViewerBase::SingleThreaded);
     osgViewer->setUpViewerAsEmbeddedInWindow(0, 0, 1, 1);
     osgViewer->setSceneData(osgDB::readNodeFile("cow.osgt"));
     osgViewer->getCamera()->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -69,29 +70,25 @@ void Viewer::wheelEvent(QWheelEvent *event)
 
 void Viewer::mouseDoubleClickEvent(QMouseEvent* event)
 {
-//    qDebug() << "mouseDoubleClickEvent" << event;
     osgViewer->getEventQueue()->mouseDoubleButtonPress((float)event->x(), (float)event->y(), mouseButtonMask(event));
     update();
 }
 
 void Viewer::mouseMoveEvent(QMouseEvent *event)
 {
-//    qDebug() << "mouseMoveEvent" << event;
-    osgViewer->getEventQueue()->mouseMotion((float)event->x(), (float)event->y());
+    osgViewer->getEventQueue()->mouseMotion(event->localPos().x(), event->localPos().y());
     update();
 }
 
 void Viewer::mousePressEvent(QMouseEvent *event)
 {
-//    qDebug() << "mousePressEvent" << event;
-    osgViewer->getEventQueue()->mouseButtonPress((float)event->x(), (float)event->y(), mouseButtonMask(event));
+    osgViewer->getEventQueue()->mouseButtonPress(event->localPos().x(), event->localPos().y(), mouseButtonMask(event));
     update();
 }
 
 void Viewer::mouseReleaseEvent(QMouseEvent *event)
 {
-//    qDebug() << "mouseReleaseEvent" << event;
-    osgViewer->getEventQueue()->mouseButtonRelease((float)event->x(), (float)event->y(), mouseButtonMask(event));
+    osgViewer->getEventQueue()->mouseButtonRelease(event->localPos().x(), event->localPos().y(), mouseButtonMask(event));
     update();
 }
 

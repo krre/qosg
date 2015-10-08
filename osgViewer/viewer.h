@@ -8,6 +8,7 @@ public:
     ViewerRenderer(osg::ref_ptr<osgViewer::Viewer> osgViewer);
     void render();
     QOpenGLFramebufferObject *createFramebufferObject(const QSize &size);
+
 private:
     osg::ref_ptr<osgViewer::Viewer> osgViewer;
 };
@@ -22,6 +23,7 @@ public:
 
 protected:
     QSGNode* updatePaintNode(QSGNode* node, UpdatePaintNodeData* nodeData) override;
+
     void wheelEvent(QWheelEvent* event) override;
     void mouseDoubleClickEvent(QMouseEvent* event) override;
     void mouseMoveEvent(QMouseEvent* event) override;
@@ -31,5 +33,4 @@ protected:
 private:
     osgGA::GUIEventAdapter::MouseButtonMask mouseButtonMask(QMouseEvent *event);
     osg::ref_ptr<osgViewer::Viewer> osgViewer;
-
 };
