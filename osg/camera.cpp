@@ -17,12 +17,12 @@ void Camera::fromOsg(osg::Camera *camera)
 
 QColor Camera::getClearColor()
 {
-    return Converter::vec4ToQColor(toOsg()->getClearColor());
+    return Converter::fromVec4(toOsg()->getClearColor());
 }
 
 void Camera::setClearColor(QColor clearColor)
 {
-    osg::Vec4 vec4 = Converter::qColorToVec4(clearColor);
+    osg::Vec4 vec4 = Converter::toVec4(clearColor);
     if (vec4 == toOsg()->getClearColor()) return;
     toOsg()->setClearColor(vec4);
     emit clearColorChanged(clearColor);

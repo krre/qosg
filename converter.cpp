@@ -1,14 +1,23 @@
 #include "converter.h"
 
-
-
-
-osg::Vec4 Converter::qColorToVec4(QColor color)
+osg::Vec4 Converter::toVec4(const QColor& color)
 {
     return osg::Vec4(color.redF(), color.greenF(), color.blueF(), color.alphaF());
 }
 
-QColor Converter::vec4ToQColor(osg::Vec4 vec4)
+QColor Converter::fromVec4(const osg::Vec4& vec4)
 {
     return QColor::fromRgbF(vec4.r(), vec4.g(), vec4.b(), vec4.a());
+}
+
+osg::Vec3 Converter::toVec3(const QVector3D& vector3d)
+{
+    return osg::Vec3(static_cast<osg::Vec3::value_type>(vector3d.x()),
+                     static_cast<osg::Vec3::value_type>(vector3d.y()),
+                     static_cast<osg::Vec3::value_type>(vector3d.z()));
+}
+
+QVector3D Converter::fromVec3(const osg::Vec3& vec3)
+{
+    return QVector3D(vec3.x(), vec3.y(), vec3.z());
 }

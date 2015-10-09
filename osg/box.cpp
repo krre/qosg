@@ -1,4 +1,5 @@
 #include "box.h"
+#include "../converter.h"
 
 void Box::classBegin()
 {
@@ -15,7 +16,7 @@ QVector3D Box::getHalfLengths() const {
 void Box::setHalfLengths(QVector3D halfLengths)
 {
     if (this->halfLengths == halfLengths) return;
-    osg::Vec3 osgVec3 = osg::Vec3(static_cast<osg::Vec3::value_type>(halfLengths.x()), static_cast<osg::Vec3::value_type>(halfLengths.y()), static_cast<osg::Vec3::value_type>(halfLengths.z()));
-    toOsg()->setHalfLengths(osgVec3);
+    osg::Vec3 vec3 = Converter::toVec3(halfLengths);
+    toOsg()->setHalfLengths(vec3);
     emit halfLengthsChanged(halfLengths);
 }
