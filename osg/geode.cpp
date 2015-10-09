@@ -1,26 +1,36 @@
 #include "geode.h"
 
+void Geode::classBegin()
+{
+    if (osgObj == nullptr) {
+        osgObj = new osg::Geode;
+    }
+    Node::classBegin();
+}
+
 void Geode::append(QQmlListProperty<Drawable>* list, Drawable* drawable)
 {
     if (!drawable) return;
     Geode* self = static_cast<Geode*>(list->object);
-    self->addDrawable(static_cast<osg::Drawable*>(drawable));
+    self->drawables.append(drawable);
+    self->toOsg()->addDrawable(drawable->toOsg());
     self->drawableListChanged();
 }
 
 Drawable* Geode::at(QQmlListProperty<Drawable>* list, int index)
 {
-    return static_cast<Drawable*>(static_cast<Geode*>(list->object)->getDrawable(index));
+    return static_cast<Geode*>(list->object)->drawables.at(index);
 }
 
 int Geode::count(QQmlListProperty<Drawable>* list)
 {
-    return static_cast<Geode*>(list->object)->getNumDrawables();
+    return static_cast<Geode*>(list->object)->toOsg()->getNumDrawables();
 }
 
 void Geode::clear(QQmlListProperty<Drawable>* list)
 {
     Geode* self = static_cast<Geode*>(list->object);
-    self->removeDrawables(0, self->getNumDrawables());
+    self->drawables.clear();
+    self->toOsg()->removeDrawables(0, self->toOsg()->getNumDrawables());
     self->drawableListChanged();
 }

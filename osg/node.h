@@ -2,10 +2,12 @@
 #include <osg/Node>
 #include "object.h"
 
-class Node : public Object, public osg::Node
+class Node : public Object
 {
     Q_OBJECT
-
 public:
     Node() {}
+    void classBegin() override;
+    osg::Node* toOsg() { return static_cast<osg::Node*>(osgObj); }
 };
+

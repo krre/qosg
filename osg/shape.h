@@ -2,14 +2,12 @@
 #include <osg/Shape>
 #include "object.h"
 
-class Shape : public Object, public osg::Shape
+class Shape : public Object
 {
     Q_OBJECT
 public:
     Shape() {}
-    osg::Object* cloneType() const { return nullptr; }
-    osg::Object* clone(const osg::CopyOp&) const { return nullptr; }
-    void accept(osg::ShapeVisitor&) {}
-    void accept(osg::ConstShapeVisitor&) const {}
+    void classBegin() override;
+    osg::Shape* toOsg() { return static_cast<osg::Shape*>(osgObj); }
 };
 

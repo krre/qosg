@@ -15,7 +15,7 @@ private:
     osgViewer::Viewer* osgViewer;
 };
 
-class Viewer : public QQuickFramebufferObject, public osgViewer::Viewer
+class Viewer : public QQuickFramebufferObject
 {
     Q_OBJECT
     Q_PROPERTY(Node* sceneData READ getSceneData WRITE setSceneData NOTIFY sceneDataChanged)
@@ -24,7 +24,7 @@ public:
     Viewer();
     Renderer* createRenderer() const;
 
-    Node* getSceneData() { return static_cast<Node*>(osgViewer::Viewer::getSceneData()); }
+    Node* getSceneData() const { return sceneData; }
     void setSceneData(Node* sceneData);
 
 signals:
@@ -42,4 +42,5 @@ protected:
 private:
     osgGA::GUIEventAdapter::MouseButtonMask mouseButtonMask(QMouseEvent *event);
     osgViewer::Viewer* osgViewer;
+    Node* sceneData;
 };

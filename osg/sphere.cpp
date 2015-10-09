@@ -1,9 +1,17 @@
 #include "sphere.h"
 
+void Sphere::classBegin()
+{
+    if (osgObj == nullptr) {
+        osgObj = new osg::Sphere;
+    }
+    Shape::classBegin();
+}
+
 void Sphere::setRadius(float radius)
 {
-    if (getRadius() == radius) return;
-    osg::Sphere::setRadius(radius);
+    if (toOsg()->getRadius() == radius) return;
+    toOsg()->setRadius(radius);
     emit radiusChanged(radius);
 }
 

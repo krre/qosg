@@ -5,7 +5,7 @@
 #include "drawable.h"
 #include "node.h"
 
-class Geode : public Node, public osg::Geode
+class Geode : public Node
 {
     Q_OBJECT
     Q_PROPERTY(QQmlListProperty<Drawable> drawableList READ drawableList NOTIFY drawableListChanged)
@@ -13,6 +13,8 @@ class Geode : public Node, public osg::Geode
 
 public:
     Geode() {}
+    void classBegin() override;
+    osg::Geode* toOsg() { return static_cast<osg::Geode*>(osgObj); }
     QQmlListProperty<Drawable> drawableList() { return QQmlListProperty<Drawable>(this, 0, Geode::append, Geode::count, Geode::at, Geode::clear); }
 
 signals:
@@ -23,4 +25,5 @@ private:
     static Drawable* at(QQmlListProperty<Drawable>* list, int index);
     static int count(QQmlListProperty<Drawable>* list);
     static void clear(QQmlListProperty<Drawable>* list);
+    QList<Drawable*> drawables;
 };

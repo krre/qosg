@@ -2,13 +2,12 @@
 #include <osg/Drawable>
 #include "object.h"
 
-class Drawable : public Object, public osg::Drawable
+class Drawable : public Object
 {
     Q_OBJECT
 public:
     Drawable() {}
-    void drawImplementation(osg::RenderInfo&) const {}
-    osg::Object* cloneType() const { return nullptr; }
-    osg::Object* clone(const osg::CopyOp&) const { return nullptr; }
+    void classBegin() override;
+    osg::Drawable* toOsg() { return static_cast<osg::Drawable*>(osgObj); }
 };
 
