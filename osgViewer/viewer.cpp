@@ -64,6 +64,24 @@ void Viewer::setSceneData(Node* sceneData)
     emit sceneDataChanged(sceneData);
 }
 
+Camera* Viewer::getCamera()
+{
+    if (camera == nullptr) {
+        camera = new Camera();
+        camera->fromOsg(osgViewer->getCamera());
+        camera->classBegin();
+    }
+    return camera;
+}
+
+void Viewer::setCamera(Camera *camera)
+{
+    if (this->camera == camera) return;
+    this->camera = camera;
+    osgViewer->setCamera(camera->toOsg());
+    emit cameraChanged(camera);
+}
+
 // Hack to flip texture node vertically
 QSGNode* Viewer::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData* nodeData)
 {

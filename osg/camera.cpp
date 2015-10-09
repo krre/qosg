@@ -7,3 +7,8 @@ void Camera::classBegin()
     }
     Transform::classBegin();
 }
+
+void Camera::fromOsg(osg::Camera *camera)
+{
+    osgObj = camera;
+}
