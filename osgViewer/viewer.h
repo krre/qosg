@@ -23,7 +23,7 @@ class Viewer : public QQuickFramebufferObject
 public:
     Viewer();
     Renderer* createRenderer() const;
-
+    Q_INVOKABLE void saveScene(QString path);
     Node* getSceneData() const { return sceneData; }
     void setSceneData(Node* sceneData);
 

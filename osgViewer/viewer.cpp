@@ -5,6 +5,7 @@
 #include <QtQuick/QQuickWindow>
 #include <QtQuick/QSGSimpleTextureNode>
 #include <osgDB/ReadFile>
+#include <osgDB/WriteFile>
 #include <osg/Camera>
 #include <osgGA/TrackballManipulator>
 
@@ -48,6 +49,11 @@ Viewer::Viewer()
 QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
 {
     return new ViewerRenderer(osgViewer);
+}
+
+void Viewer::saveScene(QString path)
+{
+    osgDB::writeNodeFile(*sceneData->toOsg(), path.toStdString());
 }
 
 void Viewer::setSceneData(Node* sceneData)
