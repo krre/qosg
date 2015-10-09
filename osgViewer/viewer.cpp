@@ -40,7 +40,6 @@ Viewer::Viewer()
     osgViewer->setUpViewerAsEmbeddedInWindow(0, 0, 1, 1);
     osgViewer->setSceneData(osgDB::readNodeFile("cow.osgt"));
     osgViewer->getCamera()->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    osgViewer->getCamera()->setClearColor(osg::Vec4(0.5f, 0.5f, 0.5f, 1.0f));
     auto manipulator = new osgGA::TrackballManipulator;
     manipulator->setAllowThrow(false);
     osgViewer->setCameraManipulator(manipulator);
