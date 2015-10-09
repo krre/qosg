@@ -21,3 +21,13 @@ QVector3D Converter::fromVec3(const osg::Vec3& vec3)
 {
     return QVector3D(vec3.x(), vec3.y(), vec3.z());
 }
+
+osgText::String Converter::toOsgString(const QString& str)
+{
+    return  osgText::String(str.toStdString(), osgText::String::ENCODING_UTF8);
+}
+
+QString Converter::fromOsgString(const osgText::String& str)
+{
+   return QString::fromStdString(str.createUTF8EncodedString());
+}

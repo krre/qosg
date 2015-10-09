@@ -1,5 +1,4 @@
 #include "textbase.h"
-#include <QDebug>
 #include <osgText/Font>
 
 void TextBase::classBegin()
@@ -10,7 +9,7 @@ void TextBase::classBegin()
     toOsg()->setFont("fonts/times.ttf");
 }
 
-void TextBase::setText(QString text)
+void TextBase::setText(const QString& text)
 {
     if (toOsg()->getText().createUTF8EncodedString() == text.toStdString()) return;
     toOsg()->setText(text.toStdString());
