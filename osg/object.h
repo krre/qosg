@@ -1,6 +1,5 @@
 #pragma once
 #include <osg/Object>
-#include <osg/CopyOp>
 #include <QObject>
 
 class Object : public QObject, public osg::Object

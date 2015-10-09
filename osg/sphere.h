@@ -1,8 +1,8 @@
 #pragma once
 #include <osg/Shape>
-#include <QObject>
+#include "shape.h"
 
-class Sphere : public QObject, public osg::Sphere
+class Sphere : public Shape, public osg::Sphere
 {
     Q_OBJECT
     Q_PROPERTY(float radius READ getRadius WRITE setRadius NOTIFY radiusChanged)

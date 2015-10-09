@@ -1,8 +1,8 @@
 #pragma once
 #include <osg/Group>
-#include <QObject>
+#include "node.h"
 
-class Group : public QObject, public osg::Group
+class Group : public Node, public osg::Group
 {
     Q_OBJECT
 

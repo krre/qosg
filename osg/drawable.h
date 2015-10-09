@@ -1,7 +1,5 @@
 #pragma once
 #include <osg/Drawable>
-#include <osg/RenderInfo>
-#include <QObject>
 #include "object.h"
 
 class Drawable : public Object, public osg::Drawable
@@ -10,5 +8,7 @@ class Drawable : public Object, public osg::Drawable
 public:
     Drawable() {}
     void drawImplementation(osg::RenderInfo&) const {}
+    osg::Object* cloneType() const { return nullptr; }
+    osg::Object* clone(const osg::CopyOp&) const { return nullptr; }
 };
 

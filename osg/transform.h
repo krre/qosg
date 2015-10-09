@@ -1,11 +1,10 @@
 #pragma once
 #include <osg/Transform>
-#include <QObject>
+#include "group.h"
 
-class Transform : public QObject, public osg::Transform
+class Transform : public Group, public osg::Transform
 {
     Q_OBJECT
-
 public:
     Transform() {}
 };

@@ -1,11 +1,10 @@
 #pragma once
 #include <osg/Shape>
-#include <QObject>
+#include "shape.h"
 
-class Box : public QObject, public osg::Box
+class Box : public Shape, public osg::Box
 {
     Q_OBJECT
-
 public:
     Box() {}
 };

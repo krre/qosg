@@ -1,9 +1,8 @@
 #pragma once
 #include <osg/Node>
-#include <QObject>
 #include "object.h"
 
-class Node : public QObject, public osg::Node
+class Node : public Object, public osg::Node
 {
     Q_OBJECT
 
