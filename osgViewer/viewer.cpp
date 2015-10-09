@@ -15,6 +15,7 @@ ViewerRenderer::ViewerRenderer(osgViewer::Viewer* osgViewer) : osgViewer(osgView
 void ViewerRenderer::render() {
     QOpenGLContext::currentContext()->functions()->glUseProgram(0);
     osgViewer->frame();
+    update();
 }
 
 QOpenGLFramebufferObject *ViewerRenderer::createFramebufferObject(const QSize &size) {
@@ -74,31 +75,26 @@ QSGNode* Viewer::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData*
 void Viewer::wheelEvent(QWheelEvent *event)
 {
     osgViewer->getEventQueue()->mouseScroll(event->delta() < 0 ? osgGA::GUIEventAdapter::SCROLL_UP : osgGA::GUIEventAdapter::SCROLL_DOWN);
-    update();
 }
 
 void Viewer::mouseDoubleClickEvent(QMouseEvent* event)
 {
     osgViewer->getEventQueue()->mouseDoubleButtonPress((float)event->x(), (float)event->y(), mouseButtonMask(event));
-    update();
 }
 
 void Viewer::mouseMoveEvent(QMouseEvent *event)
 {
     osgViewer->getEventQueue()->mouseMotion(event->localPos().x(), event->localPos().y());
-    update();
 }
 
 void Viewer::mousePressEvent(QMouseEvent *event)
 {
     osgViewer->getEventQueue()->mouseButtonPress(event->localPos().x(), event->localPos().y(), mouseButtonMask(event));
-    update();
 }
 
 void Viewer::mouseReleaseEvent(QMouseEvent *event)
 {
     osgViewer->getEventQueue()->mouseButtonRelease(event->localPos().x(), event->localPos().y(), mouseButtonMask(event));
-    update();
 }
 
 osgGA::GUIEventAdapter::MouseButtonMask Viewer::mouseButtonMask(QMouseEvent *event)
