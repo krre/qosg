@@ -1,4 +1,5 @@
 #include "camera.h"
+#include "../converter.h"
 #include <osg/Vec4>
 
 void Camera::classBegin()
@@ -16,13 +17,12 @@ void Camera::fromOsg(osg::Camera *camera)
 
 QColor Camera::getClearColor()
 {
-    osg::Vec4 vec4 = toOsg()->getClearColor();
-    return QColor::fromRgbF(vec4.r(), vec4.g(), vec4.b(), vec4.a());
+    return Converter::vec4ToQColor(toOsg()->getClearColor());
 }
 
 void Camera::setClearColor(QColor clearColor)
 {
-    osg::Vec4 vec4 = osg::Vec4(clearColor.redF(), clearColor.greenF(), clearColor.blueF(), clearColor.alphaF());
+    osg::Vec4 vec4 = Converter::qColorToVec4(clearColor);
     if (vec4 == toOsg()->getClearColor()) return;
     toOsg()->setClearColor(vec4);
     emit clearColorChanged(clearColor);
