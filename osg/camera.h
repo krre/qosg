@@ -13,7 +13,7 @@ public:
     Camera() {}
     void classBegin() override { osgObj = new osg::Camera; }
 
-    osg::Camera* toOsg() { return static_cast<osg::Camera*>(osgObj); }
+    osg::Camera* toOsg() { return static_cast<osg::Camera*>(osgObj.get()); }
     void fromOsg(osg::Camera* camera) { osgObj = camera; }
 
     QColor getClearColor() { return Converter::fromVec4(toOsg()->getClearColor()); }

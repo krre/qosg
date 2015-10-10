@@ -8,5 +8,5 @@ class Transform : public Group
 public:
     Transform() {}
     void classBegin() override { osgObj = new osg::Transform; }
-    osg::Transform* toOsg() { return static_cast<osg::Transform*>(osgObj); }
+    osg::Transform* toOsg() { return static_cast<osg::Transform*>(osgObj.get()); }
 };

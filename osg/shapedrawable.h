@@ -12,7 +12,7 @@ class ShapeDrawable : public Drawable
 public:
     ShapeDrawable() {}
     void classBegin() override { osgObj = new osg::ShapeDrawable; }
-    osg::ShapeDrawable* toOsg() { return static_cast<osg::ShapeDrawable*>(osgObj); }
+    osg::ShapeDrawable* toOsg() { return static_cast<osg::ShapeDrawable*>(osgObj.get()); }
 
     Shape* getShape() { return shape; }
     void setShape(Shape *shape);

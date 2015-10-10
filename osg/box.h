@@ -11,7 +11,7 @@ class Box : public Shape
 public:
     Box() {}
     void classBegin() override { osgObj = new osg::Box; }
-    osg::Box* toOsg() { return static_cast<osg::Box*>(osgObj); }
+    osg::Box* toOsg() { return static_cast<osg::Box*>(osgObj.get()); }
 
     QVector3D getHalfLengths() { return Converter::fromVec3(toOsg()->getHalfLengths()); }
     void setHalfLengths(const QVector3D& halfLengths);

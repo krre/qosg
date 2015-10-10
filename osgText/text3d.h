@@ -8,5 +8,5 @@ class Text3D : public TextBase
 public:
     Text3D() {}
     void classBegin() override;
-    osgText::Text3D* toOsg() { return static_cast<osgText::Text3D*>(osgObj); }
+    osgText::Text3D* toOsg() { return static_cast<osgText::Text3D*>(osgObj.get()); }
 };

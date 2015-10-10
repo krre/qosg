@@ -7,5 +7,5 @@ class Shape : public Object
     Q_OBJECT
 public:
     Shape() {}
-    osg::Shape* toOsg() { return static_cast<osg::Shape*>(osgObj); }
+    osg::Shape* toOsg() { return static_cast<osg::Shape*>(osgObj.get()); }
 };

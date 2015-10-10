@@ -8,5 +8,5 @@ class Text : public TextBase
 public:
     Text() {}
     void classBegin() override;
-    osgText::Text* toOsg() { return static_cast<osgText::Text*>(osgObj); }
+    osgText::Text* toOsg() { return static_cast<osgText::Text*>(osgObj.get()); }
 };

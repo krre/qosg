@@ -12,8 +12,8 @@ public:
     Object() {}
     void classBegin() override {}
     void componentComplete() override {}
-    osg::Object* toOsg() { return osgObj; }
+    osg::Object* toOsg() { return osgObj.get(); }
 
 protected:
-    osg::Object* osgObj = nullptr;
+    osg::ref_ptr<osg::Object> osgObj;
 };

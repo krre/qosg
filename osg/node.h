@@ -8,6 +8,6 @@ class Node : public Object
 public:
     Node() {}
     void classBegin() override { osgObj = new osg::Node; }
-    osg::Node* toOsg() { return static_cast<osg::Node*>(osgObj); }
+    osg::Node* toOsg() { return static_cast<osg::Node*>(osgObj.get()); }
 };
 

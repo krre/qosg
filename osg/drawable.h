@@ -8,6 +8,6 @@ class Drawable : public Object
 public:
     Drawable() {}
     void classBegin() override {}
-    osg::Drawable* toOsg() { return static_cast<osg::Drawable*>(osgObj); }
+    osg::Drawable* toOsg() { return static_cast<osg::Drawable*>(osgObj.get()); }
 };
 

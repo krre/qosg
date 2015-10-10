@@ -12,7 +12,7 @@ class TextBase : public Drawable
 public:
     TextBase() {}
     void classBegin() override;
-    osgText::TextBase* toOsg() { return static_cast<osgText::TextBase*>(osgObj); }
+    osgText::TextBase* toOsg() { return static_cast<osgText::TextBase*>(osgObj.get()); }
 
     QString text() { return Converter::fromOsgString(toOsg()->getText()); }
     void setText(const QString& text);
