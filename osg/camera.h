@@ -1,7 +1,8 @@
 #pragma once
 #include <osg/Camera>
-#include "transform.h"
 #include <QColor>
+#include "transform.h"
+#include "../converter.h"
 
 class Camera : public Transform
 {
@@ -10,12 +11,13 @@ class Camera : public Transform
 
 public:
     Camera() {}
-    void classBegin() override;
-    osg::Camera* toOsg() { return static_cast<osg::Camera*>(osgObj); }
-    void fromOsg(osg::Camera* camera);
+    void classBegin() override { osgObj = new osg::Camera; }
 
-    QColor getClearColor();
-    void setClearColor(QColor clearColor);
+    osg::Camera* toOsg() { return static_cast<osg::Camera*>(osgObj); }
+    void fromOsg(osg::Camera* camera) { osgObj = camera; }
+
+    QColor getClearColor() { return Converter::fromVec4(toOsg()->getClearColor()); }
+    void setClearColor(const QColor& clearColor);
 signals:
-    void clearColorChanged(QColor clearColor);
+    void clearColorChanged(const QColor& clearColor);
 };
