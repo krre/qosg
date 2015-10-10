@@ -2,7 +2,6 @@
 #include <QQmlParserStatus>
 #include <osg/Object>
 #include <QObject>
-#include <QDebug>
 
 class Object : public QObject, public QQmlParserStatus
 {
@@ -11,7 +10,7 @@ class Object : public QObject, public QQmlParserStatus
 
 public:
     Object() {}
-    void classBegin() override { qDebug() << "class begin object"; }
+    void classBegin() override {}
     void componentComplete() override {}
     osg::Object* toOsg() { return osgObj; }
 
