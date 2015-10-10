@@ -16,6 +16,7 @@ public:
 
     Shape* getShape() { return shape; }
     void setShape(Shape *shape);
+
     QColor getColor() { return Converter::fromVec4(toOsg()->getColor()); }
     void setColor(const QColor& color);
 

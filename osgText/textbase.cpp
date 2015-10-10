@@ -14,3 +14,11 @@ void TextBase::setText(const QString& text)
     toOsg()->setText(text.toStdString());
     emit textChanged(text);
 }
+
+void TextBase::setColor(const QColor &color)
+{
+    osg::Vec4 vec4 = Converter::toVec4(color);
+    if (vec4 == toOsg()->getColor()) return;
+    toOsg()->setColor(vec4);
+    emit colorChanged(color);
+}
