@@ -38,7 +38,6 @@ Viewer::Viewer()
     osgViewer = new osgViewer::Viewer;
     osgViewer->setThreadingModel(osgViewer::ViewerBase::SingleThreaded);
     osgViewer->setUpViewerAsEmbeddedInWindow(0, 0, 1, 1);
-    osgViewer->setSceneData(osgDB::readNodeFile("cow.osgt"));
     osgViewer->getCamera()->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     auto manipulator = new osgGA::TrackballManipulator;
     manipulator->setAllowThrow(false);
@@ -47,7 +46,7 @@ Viewer::Viewer()
 
 QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
 {
-    return new ViewerRenderer(osgViewer);
+    return new ViewerRenderer(osgViewer.get());
 }
 
 void Viewer::saveScene(QString path)
@@ -65,18 +64,17 @@ void Viewer::setSceneData(Node* sceneData)
 
 Camera* Viewer::getCamera()
 {
-    if (camera == nullptr) {
-        camera = new Camera();
+    if (camera.isNull()) {
+        camera = QSharedPointer<Camera>(new Camera());
         camera->fromOsg(osgViewer->getCamera());
-        camera->classBegin();
     }
-    return camera;
+    return camera.data();
 }
 
 void Viewer::setCamera(Camera *camera)
 {
     if (this->camera == camera) return;
-    this->camera = camera;
+    this->camera = QSharedPointer<Camera>(camera);
     osgViewer->setCamera(camera->toOsg());
     emit cameraChanged(camera);
 }

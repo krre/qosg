@@ -48,7 +48,7 @@ protected:
 
 private:
     osgGA::GUIEventAdapter::MouseButtonMask mouseButtonMask(QMouseEvent *event);
-    osgViewer::Viewer* osgViewer;
+    osg::ref_ptr<osgViewer::Viewer> osgViewer;
     Node* sceneData;
-    Camera* camera = nullptr;
+    QSharedPointer<Camera> camera;
 };
