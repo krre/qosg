@@ -22,3 +22,10 @@ void TextBase::setColor(const QColor &color)
     toOsg()->setColor(vec4);
     emit colorChanged(color);
 }
+
+void TextBase::setCharacterSize(float characterSize)
+{
+    if (toOsg()->getCharacterHeight() == characterSize) return;
+    toOsg()->setCharacterSize(characterSize);
+    emit characterSizeChanged(characterSize);
+}
