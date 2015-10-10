@@ -6,7 +6,6 @@ void ShapeDrawable::classBegin()
     if (osgObj == nullptr) {
         osgObj = new osg::ShapeDrawable;
     }
-    Drawable::classBegin();
 }
 
 void ShapeDrawable::setShape(Shape* shape)

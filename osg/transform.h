@@ -7,6 +7,6 @@ class Transform : public Group
     Q_OBJECT
 public:
     Transform() {}
-    void classBegin() override;
+    void classBegin() override { osgObj = new osg::Transform; }
     osg::Transform* toOsg() { return static_cast<osg::Transform*>(osgObj); }
 };

@@ -5,7 +5,6 @@ void Sphere::classBegin()
     if (osgObj == nullptr) {
         osgObj = new osg::Sphere;
     }
-    Shape::classBegin();
 }
 
 void Sphere::setRadius(float radius)

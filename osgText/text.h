@@ -7,7 +7,6 @@ class Text : public TextBase
     Q_OBJECT
 public:
     Text() {}
-    void classBegin() override;
+    void classBegin() override { osgObj = new osgText::Text; }
     osgText::Text* toOsg() { return static_cast<osgText::Text*>(osgObj); }
 };
-

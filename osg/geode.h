@@ -13,7 +13,7 @@ class Geode : public Node
 
 public:
     Geode() {}
-    void classBegin() override;
+    void classBegin() override { osgObj = new osg::Geode; }
     osg::Geode* toOsg() { return static_cast<osg::Geode*>(osgObj); }
     QQmlListProperty<Drawable> drawableList() { return QQmlListProperty<Drawable>(this, 0, Geode::append, Geode::count, Geode::at, Geode::clear); }
 

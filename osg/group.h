@@ -8,6 +8,6 @@ class Group : public Node
 
 public:
     Group() {}
-    void classBegin() override;
+    void classBegin() override { osgObj = new osg::Group; }
     osg::Group* toOsg() { return static_cast<osg::Group*>(osgObj); }
 };

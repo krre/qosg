@@ -1,13 +1,5 @@
 #include "geode.h"
 
-void Geode::classBegin()
-{
-    if (osgObj == nullptr) {
-        osgObj = new osg::Geode;
-    }
-    Node::classBegin();
-}
-
 void Geode::append(QQmlListProperty<Drawable>* list, Drawable* drawable)
 {
     if (!drawable) return;

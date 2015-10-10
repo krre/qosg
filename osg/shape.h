@@ -7,7 +7,5 @@ class Shape : public Object
     Q_OBJECT
 public:
     Shape() {}
-    void classBegin() override;
     osg::Shape* toOsg() { return static_cast<osg::Shape*>(osgObj); }
 };
-

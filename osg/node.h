@@ -7,7 +7,7 @@ class Node : public Object
     Q_OBJECT
 public:
     Node() {}
-    void classBegin() override;
+    void classBegin() override { osgObj = new osg::Node; }
     osg::Node* toOsg() { return static_cast<osg::Node*>(osgObj); }
 };
 

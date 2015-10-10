@@ -3,7 +3,6 @@
 
 void TextBase::classBegin()
 {
-    Drawable::classBegin();
     toOsg()->setAxisAlignment(osgText::TextBase::AxisAlignment::XZ_PLANE);
     toOsg()->setCharacterSize(0.15);
     toOsg()->setFont("fonts/times.ttf");
