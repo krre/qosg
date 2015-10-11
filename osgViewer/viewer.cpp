@@ -49,11 +49,6 @@ QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
     return new ViewerRenderer(osgViewer.get());
 }
 
-void Viewer::saveScene(QString path)
-{
-    osgDB::writeNodeFile(*sceneData->toOsg(), path.toStdString());
-}
-
 void Viewer::setSceneData(Node* sceneData)
 {
     if (sceneData == this->sceneData) return;
