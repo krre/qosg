@@ -9,6 +9,7 @@ class TextBase : public Drawable
     Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
     Q_PROPERTY(QColor color READ getColor WRITE setColor NOTIFY colorChanged)
     Q_PROPERTY(float characterSize READ getCharacterSize WRITE setCharacterSize NOTIFY characterSizeChanged)
+    Q_PROPERTY(QVector3D position READ getPosition WRITE setPosition NOTIFY positionChanged)
 
 public:
     TextBase() {}
@@ -24,8 +25,12 @@ public:
     float getCharacterSize() { return toOsg()->getCharacterHeight(); }
     void setCharacterSize(float characterSize);
 
+    QVector3D getPosition() { return Converter::fromVec3(toOsg()->getPosition()); }
+    void setPosition(const QVector3D& position);
+
 signals:
-    void textChanged(QString text);
-    void colorChanged(QColor color);
+    void textChanged(const QString& text);
+    void colorChanged(const QColor& color);
     void characterSizeChanged(float characterSize);
+    void positionChanged(const QVector3D& position);
 };
