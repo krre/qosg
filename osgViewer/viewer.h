@@ -25,6 +25,7 @@ class Viewer : public QQuickFramebufferObject
 public:
     Viewer();
     Renderer* createRenderer() const;
+    Q_INVOKABLE void home() { osgViewer->getCameraManipulator()->home(0); }
 
     Node* getSceneData() const { return sceneData; }
     void setSceneData(Node* sceneData);
