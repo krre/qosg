@@ -21,7 +21,6 @@ void ViewerRenderer::render() {
 
 QOpenGLFramebufferObject *ViewerRenderer::createFramebufferObject(const QSize &size) {
     osgViewer->getCamera()->setViewport(0, 0, size.width(), size.height());
-    osgViewer->getCamera()->setProjectionMatrixAsPerspective(30.0, (float) size.width() / size.height(), 0.1, 100);
     osgViewer->getEventQueue()->windowResize(0, 0, size.width(), size.height());
 
     QOpenGLFramebufferObjectFormat format;
