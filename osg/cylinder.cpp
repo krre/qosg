@@ -13,3 +13,11 @@ void Cylinder::setHeight(float height)
     toOsg()->setHeight(height);
     emit heightChanged(height);
 }
+
+void Cylinder::setCenter(const QVector3D& center)
+{
+    osg::Vec3 vec3 = Converter::toVec3(center);
+    if (toOsg()->getCenter() == vec3) return;
+    toOsg()->setCenter(vec3);
+    emit centerChanged(center);
+}
