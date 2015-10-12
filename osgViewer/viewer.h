@@ -8,9 +8,9 @@
 class ViewerRenderer : public QQuickFramebufferObject::Renderer
 {
 public:
-    ViewerRenderer(osgViewer::Viewer *osgViewer);
+    ViewerRenderer(osgViewer::Viewer* osgViewer);
     void render();
-    QOpenGLFramebufferObject *createFramebufferObject(const QSize &size);
+    QOpenGLFramebufferObject* createFramebufferObject(const QSize& size);
 
 private:
     osgViewer::Viewer* osgViewer;
@@ -47,7 +47,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent* event) override;
 
 private:
-    osgGA::GUIEventAdapter::MouseButtonMask mouseButtonMask(QMouseEvent *event);
+    osgGA::GUIEventAdapter::MouseButtonMask mouseButtonMask(QMouseEvent* event);
     osg::ref_ptr<osgViewer::Viewer> osgViewer;
     Node* sceneData;
     QSharedPointer<Camera> camera;

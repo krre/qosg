@@ -1,4 +1,5 @@
 #include "viewer.h"
+#include "../osgGA/pickhandler.h"
 #include <QtGui/QOpenGLFramebufferObject>
 #include <QtGui/QOpenGLContext>
 #include <QtGui/QOpenGLFunctions>
@@ -41,6 +42,7 @@ Viewer::Viewer()
     auto manipulator = new osgGA::TrackballManipulator;
     manipulator->setAllowThrow(false);
     osgViewer->setCameraManipulator(manipulator);
+    osgViewer->addEventHandler(new PickHandler());
 }
 
 QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
@@ -87,7 +89,7 @@ QSGNode* Viewer::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData*
     return QQuickFramebufferObject::updatePaintNode(node, nodeData);
 }
 
-void Viewer::wheelEvent(QWheelEvent *event)
+void Viewer::wheelEvent(QWheelEvent* event)
 {
     osgViewer->getEventQueue()->mouseScroll(event->delta() < 0 ? osgGA::GUIEventAdapter::SCROLL_UP : osgGA::GUIEventAdapter::SCROLL_DOWN);
 }
@@ -97,22 +99,22 @@ void Viewer::mouseDoubleClickEvent(QMouseEvent* event)
     osgViewer->getEventQueue()->mouseDoubleButtonPress((float)event->x(), (float)event->y(), mouseButtonMask(event));
 }
 
-void Viewer::mouseMoveEvent(QMouseEvent *event)
+void Viewer::mouseMoveEvent(QMouseEvent* event)
 {
     osgViewer->getEventQueue()->mouseMotion(event->localPos().x(), event->localPos().y());
 }
 
-void Viewer::mousePressEvent(QMouseEvent *event)
+void Viewer::mousePressEvent(QMouseEvent* event)
 {
     osgViewer->getEventQueue()->mouseButtonPress(event->localPos().x(), event->localPos().y(), mouseButtonMask(event));
 }
 
-void Viewer::mouseReleaseEvent(QMouseEvent *event)
+void Viewer::mouseReleaseEvent(QMouseEvent* event)
 {
     osgViewer->getEventQueue()->mouseButtonRelease(event->localPos().x(), event->localPos().y(), mouseButtonMask(event));
 }
 
-osgGA::GUIEventAdapter::MouseButtonMask Viewer::mouseButtonMask(QMouseEvent *event)
+osgGA::GUIEventAdapter::MouseButtonMask Viewer::mouseButtonMask(QMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton) {
         return osgGA::GUIEventAdapter::LEFT_MOUSE_BUTTON;
