@@ -1,7 +1,7 @@
 #pragma once
 #include <QtQml>
-#include <osgDb/ReadFile>
-#include <osgDb/WriteFile>
+#include <osgDB/ReadFile>
+#include <osgDB/WriteFile>
 #include "../osg/node.h"
 
 class OsgDb : public QObject
