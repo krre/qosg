@@ -37,7 +37,8 @@ Viewer::Viewer()
 
     osgViewer = new osgViewer::Viewer;
     osgViewer->setThreadingModel(osgViewer::ViewerBase::SingleThreaded);
-    osgViewer->setUpViewerAsEmbeddedInWindow(0, 0, 1, 1);
+    osg::GraphicsContext* gc = osgViewer->setUpViewerAsEmbeddedInWindow(0, 0, 1, 1);
+    osgViewer->getEventQueue()->setGraphicsContext(gc);
     osgViewer->getCamera()->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     auto manipulator = new osgGA::TrackballManipulator;
     manipulator->setAllowThrow(false);
