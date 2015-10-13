@@ -7,9 +7,11 @@
 
 bool PickHandler::handle(const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdapter& aa)
 {
-    if (ea.getEventType() != osgGA::GUIEventAdapter::PUSH && ea.getButton() != osgGA::GUIEventAdapter::RIGHT_MOUSE_BUTTON) {
-        return false;
-    }
+    int push = 1;
+    if (ea.getEventType() != push) return false;
+
+    int rightMouseButton = 0;
+    if (ea.getButton() != rightMouseButton) return false;
 
     osgViewer::View* viewer = dynamic_cast<osgViewer::View*>(&aa);
 
