@@ -11,7 +11,7 @@ class Group : public Node
 
 public:
     Group() {}
-    void classBegin() override { osgObj = new osg::Group; }
+    void classBegin() override;
     osg::Group* toOsg() { return static_cast<osg::Group*>(osgObj.get()); }
     QQmlListProperty<Node> childList() { return QQmlListProperty<Node>(this, 0, Group::append, Group::count, Group::at, Group::clear); }
 

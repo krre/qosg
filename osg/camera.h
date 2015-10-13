@@ -16,7 +16,7 @@ class Camera : public Transform
 
 public:
     Camera() {}
-    void classBegin() override { osgObj = new osg::Camera; }
+    void classBegin() override;
 
     osg::Camera* toOsg() { return static_cast<osg::Camera*>(osgObj.get()); }
     void fromOsg(osg::Camera* camera) { osgObj = camera; }

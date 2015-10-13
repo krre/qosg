@@ -1,5 +1,10 @@
 #include "box.h"
 
+void Box::classBegin() {
+    osgObj = new osg::Box;
+    Shape::classBegin();
+}
+
 void Box::setHalfLengths(const QVector3D& halfLengths)
 {
     osg::Vec3 vec3 = Converter::toVec3(halfLengths);

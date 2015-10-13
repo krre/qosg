@@ -11,7 +11,7 @@ class Box : public Shape
     Q_PROPERTY(QVector3D center READ getCenter WRITE setCenter NOTIFY centerChanged)
 public:
     Box() {}
-    void classBegin() override { osgObj = new osg::Box; }
+    void classBegin() override;
     osg::Box* toOsg() { return static_cast<osg::Box*>(osgObj.get()); }
 
     QVector3D getHalfLengths() { return Converter::fromVec3(toOsg()->getHalfLengths()); }

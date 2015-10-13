@@ -1,5 +1,11 @@
 #include "group.h"
 
+void Group::classBegin()
+{
+    osgObj = new osg::Group;
+    Node::classBegin();
+}
+
 void Group::addChild(Node* child)
 {
     nodes.append(child);

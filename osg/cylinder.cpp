@@ -1,5 +1,11 @@
 #include "cylinder.h"
 
+void Cylinder::classBegin()
+{
+    osgObj = new osg::Cylinder;
+    Shape::classBegin();
+}
+
 void Cylinder::setRadius(float radius)
 {
     if (toOsg()->getRadius() == radius) return;

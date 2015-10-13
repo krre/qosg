@@ -1,6 +1,11 @@
 #include "camera.h"
 #include <osg/Vec4>
 
+void Camera::classBegin() {
+    osgObj = new osg::Camera;
+    Transform::classBegin();
+}
+
 void Camera::setClearColor(const QColor& clearColor)
 {
     osg::Vec4 vec4 = Converter::toVec4(clearColor);

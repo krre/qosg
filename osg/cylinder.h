@@ -12,7 +12,7 @@ class Cylinder : public Shape
 
 public:
     Cylinder() {}
-    void classBegin() override { osgObj = new osg::Cylinder; }
+    void classBegin() override;
     osg::Cylinder* toOsg() { return static_cast<osg::Cylinder*>(osgObj.get()); }
 
     float getRadius() { return toOsg()->getRadius(); }

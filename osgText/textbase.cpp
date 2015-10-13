@@ -5,6 +5,7 @@ void TextBase::classBegin()
 {
     toOsg()->setAxisAlignment(osgText::TextBase::AxisAlignment::XZ_PLANE);
     toOsg()->setFont("fonts/times.ttf");
+    Drawable::classBegin();
 }
 
 void TextBase::setText(const QString& text)

@@ -1,6 +1,12 @@
 #include "shapedrawable.h"
 #include <QDebug>
 
+void ShapeDrawable::classBegin()
+{
+    osgObj = new osg::ShapeDrawable;
+    Drawable::classBegin();
+}
+
 void ShapeDrawable::setShape(Shape* shape)
 {
     if (this->shape == shape) return;

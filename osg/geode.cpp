@@ -1,4 +1,15 @@
 #include "geode.h"
+#include <QDebug>
+
+void Geode::classBegin()
+{
+    osgObj = new osg::Geode;
+    Node::classBegin();
+}
+
+void Geode::componentComplete() {
+
+}
 
 void Geode::addDrawable(Drawable* drawable)
 {

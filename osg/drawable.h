@@ -7,7 +7,7 @@ class Drawable : public Object
     Q_OBJECT
 public:
     Drawable() {}
-    void classBegin() override {}
+    void classBegin() override;
     osg::Drawable* toOsg() { return static_cast<osg::Drawable*>(osgObj.get()); }
 };
 

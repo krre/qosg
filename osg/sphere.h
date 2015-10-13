@@ -11,7 +11,7 @@ class Sphere : public Shape
 
 public:
     Sphere() {}
-    void classBegin() override { osgObj = new osg::Sphere; }
+    void classBegin() override;
     osg::Sphere* toOsg() { return static_cast<osg::Sphere*>(osgObj.get()); }
 
     float getRadius() { return toOsg()->getRadius(); }
