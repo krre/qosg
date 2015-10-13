@@ -8,7 +8,7 @@
 bool PickHandler::handle(const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdapter& aa)
 {
     if (ea.getEventType() != osgGA::GUIEventAdapter::PUSH && ea.getButton() != osgGA::GUIEventAdapter::RIGHT_MOUSE_BUTTON) {
-      return false;
+        return false;
     }
 
     osgViewer::View* viewer = dynamic_cast<osgViewer::View*>(&aa);
@@ -18,8 +18,7 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdapt
         if (!camera) return false;
 
         float x = ea.getX();
-        float height = camera->getViewport()->height();
-        float y = height * (1 - ea.getY() / height); // invert y position
+        float y = ea.getWindowHeight() * (1 - ea.getY() / ea.getWindowHeight()); // invert y position
         osgUtil::LineSegmentIntersector* intersector = new osgUtil::LineSegmentIntersector(osgUtil::Intersector::WINDOW, x, y);
         osgUtil::IntersectionVisitor iv(intersector);
         camera->accept(iv);
