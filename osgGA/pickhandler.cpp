@@ -14,23 +14,23 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdapt
     osgViewer::View* viewer = dynamic_cast<osgViewer::View*>(&aa);
 
     if (viewer) {
-      osgUtil::LineSegmentIntersector* intersector = new osgUtil::LineSegmentIntersector(osgUtil::Intersector::WINDOW, ea.getX(), ea.getY());
-      osgUtil::IntersectionVisitor iv(intersector);
+        osg::Camera* camera = viewer->getCamera();
+        if (!camera) return false;
 
-      osg::Camera* camera = viewer->getCamera();
-      if (!camera) return false;
-      camera->accept(iv);
+        float x = ea.getX();
+        float height = camera->getViewport()->height();
+        float y = height * (1 - ea.getY() / height); // invert y position
+        osgUtil::LineSegmentIntersector* intersector = new osgUtil::LineSegmentIntersector(osgUtil::Intersector::WINDOW, x, y);
+        osgUtil::IntersectionVisitor iv(intersector);
+        camera->accept(iv);
 
-      if (!intersector->containsIntersections()) return false;
+        if (!intersector->containsIntersections()) return false;
 
-      auto intersections = intersector->getIntersections();
-
-      qDebug() << "Got " << intersections.size() << " intersections:";
-
-      for(auto&& intersection : intersections) {
-        qDebug() << "  - Local intersection point = " << Converter::fromVec3(intersection.localIntersectionPoint)
-                 << "name = " << QString::fromStdString(intersection.nodePath.back()->getName());
-      }
+        auto intersections = intersector->getIntersections();
+        for (auto&& intersection : intersections) {
+            qDebug() << QString::fromStdString(intersection.nodePath.back()->getName());
+            break;
+        }
     }
 
     return true;
