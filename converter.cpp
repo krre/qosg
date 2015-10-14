@@ -12,9 +12,7 @@ QColor Converter::fromVec4(const osg::Vec4& vec4)
 
 osg::Vec3 Converter::toVec3(const QVector3D& vector3d)
 {
-    return osg::Vec3(static_cast<osg::Vec3::value_type>(vector3d.x()),
-                     static_cast<osg::Vec3::value_type>(vector3d.y()),
-                     static_cast<osg::Vec3::value_type>(vector3d.z()));
+    return osg::Vec3(vector3d.x(), vector3d.y(), vector3d.z());
 }
 
 QVector3D Converter::fromVec3(const osg::Vec3& vec3)
