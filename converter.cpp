@@ -12,12 +12,12 @@ QColor Converter::fromVec4(const osg::Vec4& vec4)
 
 osg::Vec3 Converter::toVec3(const QVector3D& vector3d)
 {
-    return osg::Vec3(vector3d.x(), vector3d.y(), vector3d.z());
+    return osg::Vec3(vector3d.x(), vector3d.z(), vector3d.y());
 }
 
 QVector3D Converter::fromVec3(const osg::Vec3& vec3)
 {
-    return QVector3D(vec3.x(), vec3.y(), vec3.z());
+    return QVector3D(vec3.x(), vec3.z(), vec3.y());
 }
 
 osgText::String Converter::toOsgString(const QString& str)
