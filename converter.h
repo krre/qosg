@@ -22,5 +22,5 @@ public:
     static QString fromOsgString(const osgText::String& str);
 
     static osg::Quat toQuat(const QQuaternion& quaternion);
-    static QQuaternion forQuat(const osg::Quat& quat);
+    static QQuaternion fromQuat(const osg::Quat& quat);
 };

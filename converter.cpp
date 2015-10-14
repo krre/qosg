@@ -35,7 +35,7 @@ osg::Quat Converter::toQuat(const QQuaternion& quaternion)
     return osg::Quat(quaternion.x(), quaternion.y(), quaternion.z(), quaternion.scalar());
 }
 
-QQuaternion Converter::forQuat(const osg::Quat& quat)
+QQuaternion Converter::fromQuat(const osg::Quat& quat)
 {
     return QQuaternion(quat.w(), quat.x(), quat.y(), quat.z());
 }
