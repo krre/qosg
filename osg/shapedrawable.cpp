@@ -3,7 +3,9 @@
 
 void ShapeDrawable::classBegin()
 {
-    osgObj = new osg::ShapeDrawable;
+    if (osgObj == nullptr) {
+        osgObj = new osg::ShapeDrawable;
+    }
     Drawable::classBegin();
 }
 

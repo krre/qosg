@@ -22,5 +22,5 @@ signals:
     void nameChanged(QString name);
 
 protected:
-    osg::ref_ptr<osg::Object> osgObj;
+    osg::ref_ptr<osg::Object> osgObj = nullptr;
 };

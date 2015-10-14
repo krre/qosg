@@ -2,7 +2,9 @@
 
 void Group::classBegin()
 {
-    osgObj = new osg::Group;
+    if (osgObj == nullptr) {
+        osgObj = new osg::Group;
+    }
     Node::classBegin();
 }
 

@@ -2,7 +2,9 @@
 
 void Cylinder::classBegin()
 {
-    osgObj = new osg::Cylinder;
+    if (osgObj == nullptr) {
+        osgObj = new osg::Cylinder;
+    }
     Shape::classBegin();
 }
 

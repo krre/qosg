@@ -2,6 +2,8 @@
 
 void Text::classBegin()
 {
-    osgObj = new osgText::Text;
+    if (osgObj == nullptr) {
+        osgObj = new osgText::Text;
+    }
     TextBase::classBegin();
 }

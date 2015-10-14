@@ -2,6 +2,8 @@
 
 void Transform::classBegin()
 {
-    osgObj = new osg::Transform;
+    if (osgObj == nullptr) {
+        osgObj = new osg::Transform;
+    }
     Group::classBegin();
 }

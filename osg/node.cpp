@@ -2,6 +2,8 @@
 
 void Node::classBegin()
 {
-    osgObj = new osg::Node;
+    if (osgObj == nullptr) {
+        osgObj = new osg::Node;
+    }
     Object::classBegin();
 }

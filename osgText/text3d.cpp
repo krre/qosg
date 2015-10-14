@@ -2,7 +2,9 @@
 
 void Text3D::classBegin()
 {
-    osgObj = new osgText::Text3D;
+    if (osgObj == nullptr) {
+        osgObj = new osgText::Text3D;
+    }
     TextBase::classBegin();
 }
 

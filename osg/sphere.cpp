@@ -2,7 +2,9 @@
 
 void Sphere::classBegin()
 {
-    osgObj = new osg::Sphere;
+    if (osgObj == nullptr) {
+        osgObj = new osg::Sphere;
+    }
     Shape::classBegin();
 }
 

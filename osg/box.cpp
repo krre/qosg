@@ -1,7 +1,9 @@
 #include "box.h"
 
 void Box::classBegin() {
-    osgObj = new osg::Box;
+    if (osgObj == nullptr) {
+        osgObj = new osg::Box;
+    }
     Shape::classBegin();
 }
 

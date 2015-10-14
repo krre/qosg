@@ -3,7 +3,9 @@
 
 void Geode::classBegin()
 {
-    osgObj = new osg::Geode;
+    if (osgObj == nullptr) {
+        osgObj = new osg::Geode;
+    }
     Node::classBegin();
 }
 

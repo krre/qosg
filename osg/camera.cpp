@@ -2,7 +2,9 @@
 #include <osg/Vec4>
 
 void Camera::classBegin() {
-    osgObj = new osg::Camera;
+    if (osgObj == nullptr) {
+        osgObj = new osg::Camera;
+    }
     Transform::classBegin();
 }
 
