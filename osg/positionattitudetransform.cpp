@@ -15,3 +15,11 @@ void PositionAttitudeTransform::setPosition(const QVector3D& position)
     toOsg()->setPosition(vec3);
     emit positionChanged(position);
 }
+
+void PositionAttitudeTransform::setScale(const QVector3D& scale)
+{
+    osg::Vec3 vec3 = Converter::toVec3(scale);
+    if (toOsg()->getScale() == vec3) return;
+    toOsg()->setScale(vec3);
+    emit scaleChanged(scale);
+}
