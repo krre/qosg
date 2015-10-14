@@ -16,6 +16,14 @@ void PositionAttitudeTransform::setPosition(const QVector3D& position)
     emit positionChanged(position);
 }
 
+void PositionAttitudeTransform::setAttitude(const QQuaternion& attitude)
+{
+    osg::Quat quat = Converter::toQuat(attitude);
+    if (toOsg()->getAttitude() == quat) return;
+    toOsg()->setAttitude(quat);
+    emit attitudeChanged(attitude);
+}
+
 void PositionAttitudeTransform::setScale(const QVector3D& scale)
 {
     osg::Vec3 vec3 = Converter::toVec3(scale);
