@@ -30,12 +30,12 @@ QString Converter::fromOsgString(const osgText::String& str)
     return QString::fromStdString(str.createUTF8EncodedString());
 }
 
-osg::Quat Converter::toQuat(const QQuaternion &quaternion)
+osg::Quat Converter::toQuat(const QQuaternion& quaternion)
 {
     return osg::Quat(quaternion.x(), quaternion.y(), quaternion.z(), quaternion.scalar());
 }
 
-QQuaternion Converter::forQuat(const osg::Quat &quat)
+QQuaternion Converter::forQuat(const osg::Quat& quat)
 {
     return QQuaternion(quat.w(), quat.x(), quat.y(), quat.z());
 }
