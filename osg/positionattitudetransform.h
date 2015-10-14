@@ -9,6 +9,7 @@ class PositionAttitudeTransform : public Transform
     Q_PROPERTY(QVector3D position READ getPosition WRITE setPosition NOTIFY positionChanged)
     Q_PROPERTY(QQuaternion attitude READ getAttitude WRITE setAttitude NOTIFY attitudeChanged)
     Q_PROPERTY(QVector3D scale READ getScale WRITE setScale NOTIFY scaleChanged)
+    Q_PROPERTY(QVector3D pivotPoint READ getPivotPoint WRITE setPivotPoint NOTIFY pivotPointChanged)
 public:
     PositionAttitudeTransform() {}
     void classBegin() override;
@@ -23,8 +24,12 @@ public:
     QVector3D getScale() { return Converter::fromVec3(toOsg()->getScale()); }
     void setScale(const QVector3D& scale);
 
+    QVector3D getPivotPoint() { return Converter::fromVec3(toOsg()->getPivotPoint()); }
+    void setPivotPoint(const QVector3D& pivotPoint);
+
 signals:
     void positionChanged(const QVector3D& position);
     void attitudeChanged(const QQuaternion& attitude);
     void scaleChanged(const QVector3D& scale);
+    void pivotPointChanged(const QVector3D& pivotPoint);
 };

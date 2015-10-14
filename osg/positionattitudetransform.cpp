@@ -31,3 +31,11 @@ void PositionAttitudeTransform::setScale(const QVector3D& scale)
     toOsg()->setScale(vec3);
     emit scaleChanged(scale);
 }
+
+void PositionAttitudeTransform::setPivotPoint(const QVector3D& pivotPoint)
+{
+    osg::Vec3 vec3 = Converter::toVec3(pivotPoint);
+    if (toOsg()->getPivotPoint() == vec3) return;
+    toOsg()->setPivotPoint(vec3);
+    emit pivotPointChanged(pivotPoint);
+}
