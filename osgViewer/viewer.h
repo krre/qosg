@@ -36,6 +36,7 @@ public:
 signals:
     void sceneDataChanged(Node* sceneData);
     void cameraChanged(Camera* camera);
+    void picked(const QString& name);
 
 protected:
     QSGNode* updatePaintNode(QSGNode* node, UpdatePaintNodeData* nodeData) override;

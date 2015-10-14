@@ -29,7 +29,8 @@ bool PickHandler::handle(const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdapt
 
         auto intersections = intersector->getIntersections();
         for (auto&& intersection : intersections) {
-            qDebug() << QString::fromStdString(intersection.nodePath.back()->getName());
+            QString name = QString::fromStdString(intersection.nodePath.back()->getName());
+            emit picked(name);
             break;
         }
     }

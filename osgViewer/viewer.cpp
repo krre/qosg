@@ -43,7 +43,9 @@ Viewer::Viewer()
     auto manipulator = new osgGA::TrackballManipulator;
     manipulator->setAllowThrow(false);
     osgViewer->setCameraManipulator(manipulator);
-    osgViewer->addEventHandler(new PickHandler());
+    PickHandler* pickHandler = new PickHandler();
+    osgViewer->addEventHandler(pickHandler);
+    connect(pickHandler, SIGNAL(picked(const QString&)), this, SIGNAL(picked(const QString&)));
 }
 
 QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
