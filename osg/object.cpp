@@ -1,9 +1,15 @@
 #include "object.h"
 #include <QDebug>
+#include <inttypes.h>
+#include <stdint.h>
 
 void Object::classBegin()
 {
-//    qDebug() << this;
+    // Default name is class name plus object address
+    QString name;
+    name.sprintf("%08" PRIxPTR, (uintptr_t)this);
+    name = metaObject()->className() + QString("(") + name + QString(")");
+    setName(name);
 }
 
 void Object::setName(const QString& name)
