@@ -9,7 +9,6 @@ class Text3D : public TextBase
     float m_characterDepth;
 
 public:
-    Text3D() {}
     void classBegin() override;
     osgText::Text3D* toOsg() { return static_cast<osgText::Text3D*>(osgObj.get()); }
 

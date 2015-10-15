@@ -10,7 +10,6 @@ class Sphere : public Shape
     Q_PROPERTY(QVector3D center READ getCenter WRITE setCenter NOTIFY centerChanged)
 
 public:
-    Sphere() {}
     void classBegin() override;
     osg::Sphere* toOsg() { return static_cast<osg::Sphere*>(osgObj.get()); }
 

@@ -15,7 +15,6 @@ class Camera : public Transform
     Q_PROPERTY(double zFar READ getZFar WRITE setZFar NOTIFY zFarChanged)
 
 public:
-    Camera() {}
     void classBegin() override;
 
     osg::Camera* toOsg() { return static_cast<osg::Camera*>(osgObj.get()); }

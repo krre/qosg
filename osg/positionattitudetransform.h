@@ -11,7 +11,6 @@ class PositionAttitudeTransform : public Transform
     Q_PROPERTY(QVector3D scale READ getScale WRITE setScale NOTIFY scaleChanged)
     Q_PROPERTY(QVector3D pivotPoint READ getPivotPoint WRITE setPivotPoint NOTIFY pivotPointChanged)
 public:
-    PositionAttitudeTransform() {}
     void classBegin() override;
     osg::PositionAttitudeTransform* toOsg() { return static_cast<osg::PositionAttitudeTransform*>(osgObj.get()); }
 

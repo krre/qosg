@@ -10,7 +10,6 @@ class Object : public QObject, public QQmlParserStatus
     Q_INTERFACES(QQmlParserStatus)
     Q_PROPERTY(QString name READ getName WRITE setName NOTIFY nameChanged)
 public:
-    Object() {}
     void classBegin() override;
     void componentComplete() override {}
     osg::Object* toOsg() { return osgObj.get(); }

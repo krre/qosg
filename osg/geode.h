@@ -12,7 +12,6 @@ class Geode : public Node
     Q_CLASSINFO("DefaultProperty", "drawableList")
 
 public:
-    Geode() {}
     void classBegin() override;
     void componentComplete() override;
     osg::Geode* toOsg() { return static_cast<osg::Geode*>(osgObj.get()); }

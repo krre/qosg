@@ -10,7 +10,6 @@ class ShapeDrawable : public Drawable
     Q_PROPERTY(Shape* shape READ getShape WRITE setShape NOTIFY shapeChanged)
     Q_PROPERTY(QColor color READ getColor WRITE setColor NOTIFY colorChanged)
 public:
-    ShapeDrawable() {}
     void classBegin() override;
     osg::ShapeDrawable* toOsg() { return static_cast<osg::ShapeDrawable*>(osgObj.get()); }
 

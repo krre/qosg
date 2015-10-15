@@ -10,7 +10,6 @@ class Group : public Node
     Q_CLASSINFO("DefaultProperty", "childList")
 
 public:
-    Group() {}
     void classBegin() override;
     osg::Group* toOsg() { return static_cast<osg::Group*>(osgObj.get()); }
     QQmlListProperty<Node> childList() { return QQmlListProperty<Node>(this, 0, Group::append, Group::count, Group::at, Group::clear); }

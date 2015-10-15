@@ -11,7 +11,6 @@
 class Converter
 {
 public:
-    Converter() {}
     static osg::Vec4 toVec4(const QColor& color);
     static QColor fromVec4(const osg::Vec4& vec4);
 

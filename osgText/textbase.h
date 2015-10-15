@@ -12,7 +12,6 @@ class TextBase : public Drawable
     Q_PROPERTY(QVector3D position READ getPosition WRITE setPosition NOTIFY positionChanged)
 
 public:
-    TextBase() {}
     void classBegin() override;
     osgText::TextBase* toOsg() { return static_cast<osgText::TextBase*>(osgObj.get()); }
 

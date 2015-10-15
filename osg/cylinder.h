@@ -11,7 +11,6 @@ class Cylinder : public Shape
     Q_PROPERTY(QVector3D center READ getCenter WRITE setCenter NOTIFY centerChanged)
 
 public:
-    Cylinder() {}
     void classBegin() override;
     osg::Cylinder* toOsg() { return static_cast<osg::Cylinder*>(osgObj.get()); }
 

@@ -6,8 +6,6 @@
 class PickHandler : public QObject, public osgGA::GUIEventHandler {
     Q_OBJECT
 public:
-    PickHandler() {}
-    ~PickHandler() {}
     bool handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter& aa);
 
 signals:

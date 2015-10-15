@@ -9,7 +9,6 @@ class Node : public Object
     Q_PROPERTY(BoundingSphere* bound READ getBound CONSTANT)
 
 public:
-    Node() {}
     ~Node() { delete bound; }
     void classBegin() override;
 
