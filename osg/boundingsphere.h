@@ -11,10 +11,11 @@ class BoundingSphere : public QObject
     Q_PROPERTY(QVector3D center READ getCenter CONSTANT)
 
 public:
-    BoundingSphere(osg::BoundingSphere* bs) : bs(bs) {}
-    float getRadius() { return bs->radius(); }
-    QVector3D getCenter() { return Converter::fromVec3(bs->center()); }
+    void setBound(osg::BoundingSphere bs) { this->bs = bs; }
+
+    float getRadius() { return bs.radius(); }
+    QVector3D getCenter() { return Converter::fromVec3(bs.center()); }
 
 private:
-    osg::BoundingSphere* bs;
+    osg::BoundingSphere bs;
 };
