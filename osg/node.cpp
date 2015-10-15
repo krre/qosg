@@ -7,3 +7,8 @@ void Node::classBegin()
     }
     Object::classBegin();
 }
+
+BoundingSphere *Node::getBound() {
+    bound.setBound(toOsg()->computeBound());
+    return &bound;
+}
