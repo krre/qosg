@@ -1,5 +1,4 @@
 #include "shapedrawable.h"
-#include <QDebug>
 
 void ShapeDrawable::classBegin()
 {

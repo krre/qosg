@@ -1,5 +1,4 @@
 #include "osgdb.h"
-#include <QDebug>
 
 Node* OsgDb::readNodeFile(const QString& filename) {
     Node* node = new Node();

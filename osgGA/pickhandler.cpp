@@ -3,7 +3,6 @@
 #include <sstream>
 #include <osg/io_utils>
 #include <iostream>
-#include <QDebug>
 
 bool PickHandler::handle(const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdapter& aa)
 {

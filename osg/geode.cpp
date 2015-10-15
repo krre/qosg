@@ -1,5 +1,4 @@
 #include "geode.h"
-#include <QDebug>
 
 void Geode::classBegin()
 {

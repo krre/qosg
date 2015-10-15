@@ -1,5 +1,4 @@
 #include "object.h"
-#include <QDebug>
 #include <inttypes.h>
 #include <stdint.h>
 
