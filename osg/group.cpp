@@ -11,6 +11,7 @@ void Group::classBegin()
 void Group::addChild(Node* child)
 {
     nodes.append(child);
+    child->setParentGroup(this);
     toOsg()->addChild(child->toOsg());
     childListChanged();
 }

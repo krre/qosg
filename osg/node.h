@@ -3,6 +3,8 @@
 #include "object.h"
 #include "boundingsphere.h"
 
+class Group;
+
 class Node : public Object
 {
     Q_OBJECT
@@ -15,7 +17,11 @@ public:
     void fromOsg(osg::Node* node) { osgObj = node; }
 
     BoundingSphere* getBound();
+
+    Q_INVOKABLE Group* getParentGroup() { return parentGroup; }
+    Q_INVOKABLE void setParentGroup(Group* parentGroup) { this->parentGroup = parentGroup; }
 private:
     BoundingSphere bound;
+    Group* parentGroup;
 };
 
