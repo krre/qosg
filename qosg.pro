@@ -37,6 +37,7 @@ HEADERS += \
     src/osgGA/pickhandler.h \
     src/osg/positionattitudetransform.h \
     src/osg/boundingsphere.h \
+    src/registerosgtypes.h
 
 SOURCES += \
     src/osgViewer/viewer.cpp \
