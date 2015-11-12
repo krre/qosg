@@ -1,4 +1,5 @@
 #pragma once
+#include <osgGA/TrackballManipulator>
 #include <osgViewer/Viewer>
 #include <osg/Node>
 #include <QtQuick/QQuickFramebufferObject>
@@ -21,6 +22,7 @@ class Viewer : public QQuickFramebufferObject
     Q_OBJECT
     Q_PROPERTY(Node* sceneData READ getSceneData WRITE setSceneData NOTIFY sceneDataChanged)
     Q_PROPERTY(Camera* camera READ getCamera WRITE setCamera NOTIFY cameraChanged)
+    Q_PROPERTY(bool allowThrow READ allowThrow WRITE setAllowThrow NOTIFY allowThrowChanged)
 
 public:
     Viewer();
@@ -33,10 +35,16 @@ public:
     Camera* getCamera();
     void setCamera(Camera* camera);
 
+    bool allowThrow() const { return manipulator->getAllowThrow(); }
+
+    void setAllowThrow(bool allowThrow);
+
 signals:
     void sceneDataChanged(Node* sceneData);
     void cameraChanged(Camera* camera);
     void picked(const QString& name);
+
+    void allowThrowChanged(bool allowThrow);
 
 protected:
     QSGNode* updatePaintNode(QSGNode* node, UpdatePaintNodeData* nodeData) override;
@@ -49,7 +57,8 @@ protected:
 
 private:
     osgGA::GUIEventAdapter::MouseButtonMask mouseButtonMask(QMouseEvent* event);
-    osg::ref_ptr<osgViewer::Viewer> osgViewer;
+    osg::ref_ptr<osgViewer::Viewer> osgViewer = new osgViewer::Viewer;
+    osg::ref_ptr<osgGA::TrackballManipulator> manipulator = new osgGA::TrackballManipulator;
     Node* sceneData;
     QSharedPointer<Camera> camera;
 };

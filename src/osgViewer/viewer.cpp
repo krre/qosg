@@ -8,7 +8,6 @@
 #include <osgDB/ReadFile>
 #include <osgDB/WriteFile>
 #include <osg/Camera>
-#include <osgGA/TrackballManipulator>
 
 ViewerRenderer::ViewerRenderer(osgViewer::Viewer* osgViewer) : osgViewer(osgViewer)
 {
@@ -35,16 +34,14 @@ Viewer::Viewer()
     setFlag(ItemHasContents, true);
     setAcceptedMouseButtons(Qt::AllButtons);
 
-    osgViewer = new osgViewer::Viewer;
     osgViewer->setThreadingModel(osgViewer::ViewerBase::SingleThreaded);
     osg::GraphicsContext* gc = osgViewer->setUpViewerAsEmbeddedInWindow(0, 0, 1, 1);
     osgViewer->getEventQueue()->setGraphicsContext(gc);
     osgViewer->getCamera()->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    auto manipulator = new osgGA::TrackballManipulator;
-    manipulator->setAllowThrow(false);
     osgViewer->setCameraManipulator(manipulator);
     PickHandler* pickHandler = new PickHandler();
     osgViewer->addEventHandler(pickHandler);
+    setAllowThrow(false);
     connect(pickHandler, SIGNAL(picked(const QString&)), this, SIGNAL(picked(const QString&)));
 }
 
@@ -76,6 +73,13 @@ void Viewer::setCamera(Camera *camera)
     this->camera = QSharedPointer<Camera>(camera);
     osgViewer->setCamera(camera->toOsg());
     emit cameraChanged(camera);
+}
+
+void Viewer::setAllowThrow(bool allowThrow)
+{
+    if (manipulator->getAllowThrow() == allowThrow) return;
+    manipulator->setAllowThrow(allowThrow);
+    emit allowThrowChanged(allowThrow);
 }
 
 // Hack to flip texture node vertically

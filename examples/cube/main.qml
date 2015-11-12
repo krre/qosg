@@ -10,6 +10,7 @@ ApplicationWindow {
 
     Osg.Viewer {
         anchors.fill: parent
+        allowThrow: true
         camera {
             clearColor: "gray"
             fovy: 30
