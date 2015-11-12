@@ -1,6 +1,6 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
-#include <src/registerosgtypes.h>
+#include <registerosgtypes.h>
 
 int main(int argc, char *argv[])
 {
@@ -13,4 +13,3 @@ int main(int argc, char *argv[])
 
     return app.exec();
 }
-
