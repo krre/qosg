@@ -66,4 +66,4 @@ SOURCES += \
     $$PWD/osg/boundingsphere.cpp \
 
 DISTFILES += \
-    $$PWD/README.md \
+    $$PWD/../README.md \
