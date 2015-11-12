@@ -13,54 +13,57 @@ CONFIG(debug, debug|release) {
 }
 
 INCLUDEPATH += \
+    $$PWD \
     $$(OSG_HOME)/include
 
+DEPENDPATH += $$PWD
+
 HEADERS += \
-    src/osgViewer/viewer.h \
-    src/osg/node.h \
-    src/osg/group.h \
-    src/osg/transform.h \
-    src/osg/box.h \
-    src/osg/geode.h \
-    src/osg/shapedrawable.h \
-    src/osg/sphere.h \
-    src/osg/drawable.h \
-    src/osg/object.h \
-    src/osg/shape.h \
-    src/osgText/textbase.h \
-    src/osgText/text.h \
-    src/osgText/text3d.h \
-    src/osg/camera.h \
-    src/converter.h \
-    src/osgDB/osgdb.h \
-    src/osg/cylinder.h \
-    src/osgGA/pickhandler.h \
-    src/osg/positionattitudetransform.h \
-    src/osg/boundingsphere.h \
-    src/registerosgtypes.h
+    $$PWD/src/osgViewer/viewer.h \
+    $$PWD/src/osg/node.h \
+    $$PWD/src/osg/group.h \
+    $$PWD/src/osg/transform.h \
+    $$PWD/src/osg/box.h \
+    $$PWD/src/osg/geode.h \
+    $$PWD/src/osg/shapedrawable.h \
+    $$PWD/src/osg/sphere.h \
+    $$PWD/src/osg/drawable.h \
+    $$PWD/src/osg/object.h \
+    $$PWD/src/osg/shape.h \
+    $$PWD/src/osgText/textbase.h \
+    $$PWD/src/osgText/text.h \
+    $$PWD/src/osgText/text3d.h \
+    $$PWD/src/osg/camera.h \
+    $$PWD/src/converter.h \
+    $$PWD/src/osgDB/osgdb.h \
+    $$PWD/src/osg/cylinder.h \
+    $$PWD/src/osgGA/pickhandler.h \
+    $$PWD/src/osg/positionattitudetransform.h \
+    $$PWD/src/osg/boundingsphere.h \
+    $$PWD/src/registerosgtypes.h
 
 SOURCES += \
-    src/osgViewer/viewer.cpp \
-    src/osg/node.cpp \
-    src/osg/group.cpp \
-    src/osg/transform.cpp \
-    src/osg/box.cpp \
-    src/osg/geode.cpp \
-    src/osg/shapedrawable.cpp \
-    src/osg/sphere.cpp \
-    src/osg/drawable.cpp \
-    src/osg/object.cpp \
-    src/osg/shape.cpp \
-    src/osgText/textbase.cpp \
-    src/osgText/text.cpp \
-    src/osgText/text3d.cpp \
-    src/osg/camera.cpp \
-    src/converter.cpp \
-    src/osgDB/osgdb.cpp \
-    src/osg/cylinder.cpp \
-    src/osgGA/pickhandler.cpp \
-    src/osg/positionattitudetransform.cpp \
-    src/osg/boundingsphere.cpp \
+    $$PWD/src/osgViewer/viewer.cpp \
+    $$PWD/src/osg/node.cpp \
+    $$PWD/src/osg/group.cpp \
+    $$PWD/src/osg/transform.cpp \
+    $$PWD/src/osg/box.cpp \
+    $$PWD/src/osg/geode.cpp \
+    $$PWD/src/osg/shapedrawable.cpp \
+    $$PWD/src/osg/sphere.cpp \
+    $$PWD/src/osg/drawable.cpp \
+    $$PWD/src/osg/object.cpp \
+    $$PWD/src/osg/shape.cpp \
+    $$PWD/src/osgText/textbase.cpp \
+    $$PWD/src/osgText/text.cpp \
+    $$PWD/src/osgText/text3d.cpp \
+    $$PWD/src/osg/camera.cpp \
+    $$PWD/src/converter.cpp \
+    $$PWD/src/osgDB/osgdb.cpp \
+    $$PWD/src/osg/cylinder.cpp \
+    $$PWD/src/osgGA/pickhandler.cpp \
+    $$PWD/src/osg/positionattitudetransform.cpp \
+    $$PWD/src/osg/boundingsphere.cpp \
 
 DISTFILES += \
-    README.md \
+    $$PWD/README.md \
