@@ -8,4 +8,4 @@ Bridge from [OpenSceneGraph](http://www.openscenegraph.org/) to QML
 ## Using
 - Download and build OpenSceneGraph
 - Add OSG_HOME environment variable to your OS or just assign path to OSG directory at OSG_HOME variable in qosg.pri
-- See [examples](https://github.com/krre/qosg/tree/master/examples)
+- See [examples](https://github.com/krre/qosg/tree/master/examples) or see [Greenery](https://github.com/krre/greenery) repo
