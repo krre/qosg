@@ -23,6 +23,7 @@ class Viewer : public QQuickFramebufferObject
     Q_PROPERTY(Node* sceneData READ getSceneData WRITE setSceneData NOTIFY sceneDataChanged)
     Q_PROPERTY(Camera* camera READ getCamera WRITE setCamera NOTIFY cameraChanged)
     Q_PROPERTY(bool allowThrow READ allowThrow WRITE setAllowThrow NOTIFY allowThrowChanged)
+    Q_PROPERTY(bool infiniteRender READ infiniteRender WRITE setInfiniteRender NOTIFY infiniteRenderChanged)
 
 public:
     Viewer();
@@ -36,15 +37,17 @@ public:
     void setCamera(Camera* camera);
 
     bool allowThrow() const { return manipulator->getAllowThrow(); }
-
     void setAllowThrow(bool allowThrow);
+
+    bool infiniteRender() const { return m_infiniteRender; }
+    void setInfiniteRender(bool infiniteRender);
 
 signals:
     void sceneDataChanged(Node* sceneData);
     void cameraChanged(Camera* camera);
     void picked(const QString& name);
-
     void allowThrowChanged(bool allowThrow);
+    void infiniteRenderChanged(bool infiniteRender);
 
 protected:
     QSGNode* updatePaintNode(QSGNode* node, UpdatePaintNodeData* nodeData) override;
@@ -61,4 +64,5 @@ private:
     osg::ref_ptr<osgGA::TrackballManipulator> manipulator = new osgGA::TrackballManipulator;
     Node* sceneData;
     QSharedPointer<Camera> camera;
+    bool m_infiniteRender = true;
 };

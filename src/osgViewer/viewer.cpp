@@ -82,6 +82,13 @@ void Viewer::setAllowThrow(bool allowThrow)
     emit allowThrowChanged(allowThrow);
 }
 
+void Viewer::setInfiniteRender(bool infiniteRender)
+{
+    if (m_infiniteRender == infiniteRender) return;
+    m_infiniteRender = infiniteRender;
+    emit infiniteRenderChanged(infiniteRender);
+}
+
 // Hack to flip texture node vertically
 QSGNode* Viewer::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData* nodeData)
 {
