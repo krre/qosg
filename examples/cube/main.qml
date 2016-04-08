@@ -1,6 +1,6 @@
 import QtQuick 2.5
 import QtQuick.Controls 1.4
-import Osg 1.0 as Osg
+import QOsg 0.1 as QOsg
 
 ApplicationWindow {
     visible: true
@@ -8,7 +8,7 @@ ApplicationWindow {
     height: 480
     title: qsTr("Cube")
 
-    Osg.Viewer {
+    QOsg.Viewer {
         anchors.fill: parent
         allowThrow: true
         camera {
@@ -19,9 +19,9 @@ ApplicationWindow {
             zFar: 10000
         }
 
-        sceneData: Osg.Geode {
+        sceneData: QOsg.Geode {
 
-            Osg.ShapeDrawable {
+            QOsg.ShapeDrawable {
                 color: "red"
                 shape: Osg.Box {
                     halfLengths: Qt.vector3d(0.5, 0.5, 0.5)
