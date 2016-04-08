@@ -30,27 +30,27 @@ static QObject* osgdb_singletontype_provider(QQmlEngine* engine, QJSEngine* scri
 
 static void registerOsgTypes() {
     // osg
-    qmlRegisterType<Viewer>("Osg", 1, 0, "Viewer");
-    qmlRegisterType<Node>("Osg", 1, 0, "Node");
-    qmlRegisterType<Geode>("Osg", 1, 0, "Geode");
-    qmlRegisterType<Group>("Osg", 1, 0, "Group");
-    qmlRegisterType<Transform>("Osg", 1, 0, "Transform");
-    qmlRegisterType<PositionAttitudeTransform>("Osg", 1, 0, "PositionAttitudeTransform");
-    qmlRegisterType<ShapeDrawable>("Osg", 1, 0, "ShapeDrawable");
-    qmlRegisterType<Box>("Osg", 1, 0, "Box");
-    qmlRegisterType<Sphere>("Osg", 1, 0, "Sphere");
-    qmlRegisterType<Cylinder>("Osg", 1, 0, "Cylinder");
-    qmlRegisterType<Camera>("Osg", 1, 0, "Camera");
-    qmlRegisterUncreatableType<Object>("Osg", 1, 0, "Object", "Object is uncreatable type");
-    qmlRegisterUncreatableType<Drawable>("Osg", 1, 0, "Drawable", "Drawable is uncreatable type");
-    qmlRegisterUncreatableType<Shape>("Osg", 1, 0, "Shape", "Shape is uncreatable type");
-    qmlRegisterUncreatableType<BoundingSphere>("Osg", 1, 0, "BoundingSphere", "BoundingSphere is uncreatable type");
+    qmlRegisterType<Viewer>("Osg", 0, 1, "Viewer");
+    qmlRegisterType<Node>("Osg", 0, 1, "Node");
+    qmlRegisterType<Geode>("Osg", 0, 1, "Geode");
+    qmlRegisterType<Group>("Osg", 0, 1, "Group");
+    qmlRegisterType<Transform>("Osg", 0, 1, "Transform");
+    qmlRegisterType<PositionAttitudeTransform>("Osg", 0, 1, "PositionAttitudeTransform");
+    qmlRegisterType<ShapeDrawable>("Osg", 0, 1, "ShapeDrawable");
+    qmlRegisterType<Box>("Osg", 0, 1, "Box");
+    qmlRegisterType<Sphere>("Osg", 0, 1, "Sphere");
+    qmlRegisterType<Cylinder>("Osg", 0, 1, "Cylinder");
+    qmlRegisterType<Camera>("Osg", 0, 1, "Camera");
+    qmlRegisterUncreatableType<Object>("Osg", 0, 1, "Object", "Object is uncreatable type");
+    qmlRegisterUncreatableType<Drawable>("Osg", 0, 1, "Drawable", "Drawable is uncreatable type");
+    qmlRegisterUncreatableType<Shape>("Osg", 0, 1, "Shape", "Shape is uncreatable type");
+    qmlRegisterUncreatableType<BoundingSphere>("Osg", 0, 1, "BoundingSphere", "BoundingSphere is uncreatable type");
 
     // osgText
-    qmlRegisterType<Text>("Osg", 1, 0, "Text");
-    qmlRegisterType<Text3D>("Osg", 1, 0, "Text3D");
-    qmlRegisterUncreatableType<TextBase>("Osg", 1, 0, "TextBase", "TextBase is uncreatable type");
+    qmlRegisterType<Text>("Osg", 0, 1, "Text");
+    qmlRegisterType<Text3D>("Osg", 0, 1, "Text3D");
+    qmlRegisterUncreatableType<TextBase>("Osg", 0, 1, "TextBase", "TextBase is uncreatable type");
 
     // osgDB
-    qmlRegisterSingletonType<OsgDb>("Osg", 1, 0, "OsgDb", osgdb_singletontype_provider);
+    qmlRegisterSingletonType<OsgDb>("Osg", 0, 1, "OsgDb", osgdb_singletontype_provider);
 }
