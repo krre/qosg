@@ -1,8 +1,8 @@
-# QOSG
+# QOSG 0.1.0
 Bridge from [OpenSceneGraph](http://www.openscenegraph.org/) to QML
 
 ## Dependencies
-- Qt 5.5.0
+- Qt 5.6.0
 - OpenSceneGraph 3.4.0
 
 ## Using
