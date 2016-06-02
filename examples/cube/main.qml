@@ -23,7 +23,7 @@ ApplicationWindow {
 
             QOsg.ShapeDrawable {
                 color: "red"
-                shape: Osg.Box {
+                shape: QOsg.Box {
                     halfLengths: Qt.vector3d(0.5, 0.5, 0.5)
                 }
             }
