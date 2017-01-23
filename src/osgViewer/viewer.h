@@ -20,7 +20,7 @@ class Viewer : public QQuickFramebufferObject {
     Q_OBJECT
     Q_PROPERTY(Node* sceneData READ getSceneData WRITE setSceneData NOTIFY sceneDataChanged)
     Q_PROPERTY(Camera* camera READ getCamera WRITE setCamera NOTIFY cameraChanged)
-    Q_PROPERTY(bool allowThrow READ allowThrow WRITE setAllowThrow NOTIFY allowThrowChanged)
+    Q_PROPERTY(bool allowThrow READ getAllowThrow WRITE setAllowThrow NOTIFY allowThrowChanged)
     Q_PROPERTY(bool infiniteRender READ getInfiniteRender WRITE setInfiniteRender NOTIFY infiniteRenderChanged)
 
 public:
@@ -34,7 +34,7 @@ public:
     Camera* getCamera();
     void setCamera(Camera* camera);
 
-    bool allowThrow() const { return manipulator->getAllowThrow(); }
+    bool getAllowThrow() const { return manipulator->getAllowThrow(); }
     void setAllowThrow(bool allowThrow);
 
     bool getInfiniteRender() const { return infiniteRender; }
