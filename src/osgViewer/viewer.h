@@ -21,7 +21,7 @@ class Viewer : public QQuickFramebufferObject {
     Q_PROPERTY(Node* sceneData READ getSceneData WRITE setSceneData NOTIFY sceneDataChanged)
     Q_PROPERTY(Camera* camera READ getCamera WRITE setCamera NOTIFY cameraChanged)
     Q_PROPERTY(bool allowThrow READ allowThrow WRITE setAllowThrow NOTIFY allowThrowChanged)
-    Q_PROPERTY(bool getInfiniteRender READ getInfiniteRender WRITE setInfiniteRender NOTIFY infiniteRenderChanged)
+    Q_PROPERTY(bool infiniteRender READ getInfiniteRender WRITE setInfiniteRender NOTIFY infiniteRenderChanged)
 
 public:
     Viewer();
