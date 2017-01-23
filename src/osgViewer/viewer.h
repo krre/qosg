@@ -6,8 +6,7 @@
 #include "../osg/node.h"
 #include "../osg/camera.h"
 
-class ViewerRenderer : public QQuickFramebufferObject::Renderer
-{
+class ViewerRenderer : public QQuickFramebufferObject::Renderer {
 public:
     ViewerRenderer(osgViewer::Viewer* osgViewer);
     void render();
@@ -17,8 +16,7 @@ private:
     osgViewer::Viewer* osgViewer;
 };
 
-class Viewer : public QQuickFramebufferObject
-{
+class Viewer : public QQuickFramebufferObject {
     Q_OBJECT
     Q_PROPERTY(Node* sceneData READ getSceneData WRITE setSceneData NOTIFY sceneDataChanged)
     Q_PROPERTY(Camera* camera READ getCamera WRITE setCamera NOTIFY cameraChanged)

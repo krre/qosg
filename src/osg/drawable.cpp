@@ -1,6 +1,5 @@
 #include "drawable.h"
 
-void Drawable::classBegin()
-{
+void Drawable::classBegin() {
     Object::classBegin();
 }

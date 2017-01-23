@@ -4,8 +4,7 @@
 #include <osg/io_utils>
 #include <iostream>
 
-bool PickHandler::handle(const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdapter& aa)
-{
+bool PickHandler::handle(const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdapter& aa) {
     int push = 1;
     if (ea.getEventType() != push) return false;
 

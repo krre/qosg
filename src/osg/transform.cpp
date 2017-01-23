@@ -1,7 +1,6 @@
 #include "transform.h"
 
-void Transform::classBegin()
-{
+void Transform::classBegin() {
     if (osgObj == nullptr) {
         osgObj = new osg::Transform;
     }

@@ -3,8 +3,7 @@
 #include "shape.h"
 #include "../converter.h"
 
-class Cylinder : public Shape
-{
+class Cylinder : public Shape {
     Q_OBJECT
     Q_PROPERTY(float radius READ getRadius WRITE setRadius NOTIFY radiusChanged)
     Q_PROPERTY(float height READ getHeight WRITE setHeight NOTIFY heightChanged)

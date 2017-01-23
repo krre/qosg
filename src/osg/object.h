@@ -4,8 +4,7 @@
 #include <QObject>
 #include "../converter.h"
 
-class Object : public QObject, public QQmlParserStatus
-{
+class Object : public QObject, public QQmlParserStatus {
     Q_OBJECT
     Q_INTERFACES(QQmlParserStatus)
     Q_PROPERTY(QString name READ getName WRITE setName NOTIFY nameChanged)

@@ -2,8 +2,7 @@
 #include <osg/Transform>
 #include "group.h"
 
-class Transform : public Group
-{
+class Transform : public Group {
     Q_OBJECT
 public:
     void classBegin() override;

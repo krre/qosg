@@ -6,7 +6,6 @@ Node* OsgDb::readNodeFile(const QString& filename) {
     return node;
 }
 
-bool OsgDb::writeNodeFile(Node* node, const QString& filename)
-{
+bool OsgDb::writeNodeFile(Node* node, const QString& filename) {
     return osgDB::writeNodeFile(*(node->toOsg()), filename.toStdString());
 }

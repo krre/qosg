@@ -4,8 +4,7 @@
 #include <osg/ref_ptr>
 #include "../converter.h"
 
-class BoundingSphere : public QObject
-{
+class BoundingSphere : public QObject {
     Q_OBJECT
     Q_PROPERTY(float radius READ getRadius CONSTANT)
     Q_PROPERTY(QVector3D center READ getCenter CONSTANT)

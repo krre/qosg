@@ -5,8 +5,7 @@
 #include "transform.h"
 #include "../converter.h"
 
-class Camera : public Transform
-{
+class Camera : public Transform {
     Q_OBJECT
     Q_PROPERTY(QColor clearColor READ getClearColor WRITE setClearColor NOTIFY clearColorChanged)
     Q_PROPERTY(double fovy READ getFovy WRITE setFovy NOTIFY fovyChanged)

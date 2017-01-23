@@ -2,8 +2,7 @@
 #include <osgText/Text>
 #include "textbase.h"
 
-class Text : public TextBase
-{
+class Text : public TextBase {
     Q_OBJECT
 public:
     void classBegin() override;

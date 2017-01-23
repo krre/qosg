@@ -2,8 +2,7 @@
 #include <osgText/Text3D>
 #include "textbase.h"
 
-class Text3D : public TextBase
-{
+class Text3D : public TextBase {
     Q_OBJECT
     Q_PROPERTY(float characterDepth READ characterDepth WRITE setCharacterDepth NOTIFY characterDepthChanged)
     float m_characterDepth;

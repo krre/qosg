@@ -2,8 +2,7 @@
 #include <osg/Drawable>
 #include "object.h"
 
-class Drawable : public Object
-{
+class Drawable : public Object {
     Q_OBJECT
 public:
     void classBegin() override;

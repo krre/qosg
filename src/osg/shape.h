@@ -2,8 +2,7 @@
 #include <osg/Shape>
 #include "object.h"
 
-class Shape : public Object
-{
+class Shape : public Object {
     Q_OBJECT
 public:
     void classBegin() override;

@@ -4,8 +4,7 @@
 #include <QVector3D>
 #include "../converter.h"
 
-class Box : public Shape
-{
+class Box : public Shape {
     Q_OBJECT
     Q_PROPERTY(QVector3D halfLengths READ getHalfLengths WRITE setHalfLengths NOTIFY halfLengthsChanged)
     Q_PROPERTY(QVector3D center READ getCenter WRITE setCenter NOTIFY centerChanged)

@@ -3,8 +3,7 @@
 #include <osg/Group>
 #include "node.h"
 
-class Group : public Node
-{
+class Group : public Node {
     Q_OBJECT
     Q_PROPERTY(QQmlListProperty<Node> childList READ childList NOTIFY childListChanged)
     Q_CLASSINFO("DefaultProperty", "childList")

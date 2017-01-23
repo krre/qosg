@@ -4,8 +4,7 @@
 #include "shape.h"
 #include "../converter.h"
 
-class ShapeDrawable : public Drawable
-{
+class ShapeDrawable : public Drawable {
     Q_OBJECT
     Q_PROPERTY(Shape* shape READ getShape WRITE setShape NOTIFY shapeChanged)
     Q_PROPERTY(QColor color READ getColor WRITE setColor NOTIFY colorChanged)

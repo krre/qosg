@@ -3,8 +3,7 @@
 #include "transform.h"
 #include "../converter.h"
 
-class PositionAttitudeTransform : public Transform
-{
+class PositionAttitudeTransform : public Transform {
     Q_OBJECT
     Q_PROPERTY(QVector3D position READ getPosition WRITE setPosition NOTIFY positionChanged)
     Q_PROPERTY(QQuaternion attitude READ getAttitude WRITE setAttitude NOTIFY attitudeChanged)

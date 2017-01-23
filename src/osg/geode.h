@@ -5,8 +5,7 @@
 #include "drawable.h"
 #include "node.h"
 
-class Geode : public Node
-{
+class Geode : public Node {
     Q_OBJECT
     Q_PROPERTY(QQmlListProperty<Drawable> drawableList READ drawableList NOTIFY drawableListChanged)
     Q_CLASSINFO("DefaultProperty", "drawableList")

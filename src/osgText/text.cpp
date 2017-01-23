@@ -1,7 +1,6 @@
 #include "text.h"
 
-void Text::classBegin()
-{
+void Text::classBegin() {
     if (osgObj == nullptr) {
         osgObj = new osgText::Text;
     }

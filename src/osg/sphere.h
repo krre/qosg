@@ -3,8 +3,7 @@
 #include "shape.h"
 #include "../converter.h"
 
-class Sphere : public Shape
-{
+class Sphere : public Shape {
     Q_OBJECT
     Q_PROPERTY(float radius READ getRadius WRITE setRadius NOTIFY radiusChanged)
     Q_PROPERTY(QVector3D center READ getCenter WRITE setCenter NOTIFY centerChanged)

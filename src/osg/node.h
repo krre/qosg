@@ -5,8 +5,7 @@
 
 class Group;
 
-class Node : public Object
-{
+class Node : public Object {
     Q_OBJECT
     Q_PROPERTY(BoundingSphere* bound READ getBound CONSTANT)
 

@@ -8,21 +8,18 @@ void Camera::classBegin() {
     Transform::classBegin();
 }
 
-void Camera::setClearColor(const QColor& clearColor)
-{
+void Camera::setClearColor(const QColor& clearColor) {
     osg::Vec4 vec4 = Converter::toVec4(clearColor);
     if (vec4 == toOsg()->getClearColor()) return;
     toOsg()->setClearColor(vec4);
     emit clearColorChanged(clearColor);
 }
 
-double Camera::getFovy()
-{
+double Camera::getFovy() {
     return getLens()["fovy"];
 }
 
-void Camera::setFovy(double fovy)
-{
+void Camera::setFovy(double fovy) {
     QMap<QString, double> lens = getLens();
     if (lens["fovy"] == fovy) return;
     lens["fovy"] = fovy;
@@ -30,13 +27,11 @@ void Camera::setFovy(double fovy)
     emit fovyChanged(fovy);
 }
 
-double Camera::getAspectRatio()
-{
+double Camera::getAspectRatio() {
     return getLens()["aspectRatio"];
 }
 
-void Camera::setAspectRatio(double aspectRatio)
-{
+void Camera::setAspectRatio(double aspectRatio) {
     QMap<QString, double> lens = getLens();
     if (lens["aspectRatio"] == aspectRatio) return;
     lens["aspectRatio"] = aspectRatio;
@@ -44,13 +39,11 @@ void Camera::setAspectRatio(double aspectRatio)
     emit aspectRatioChanged(aspectRatio);
 }
 
-double Camera::getZNear()
-{
+double Camera::getZNear() {
     return getLens()["zNear"];
 }
 
-void Camera::setZNear(double zNear)
-{
+void Camera::setZNear(double zNear) {
     QMap<QString, double> lens = getLens();
     if (lens["zNear"] == zNear) return;
     lens["zNear"] = zNear;
@@ -58,13 +51,11 @@ void Camera::setZNear(double zNear)
     emit zNearChanged(zNear);
 }
 
-double Camera::getZFar()
-{
+double Camera::getZFar() {
     return getLens()["zFar"];;
 }
 
-void Camera::setZFar(double zFar)
-{
+void Camera::setZFar(double zFar) {
     QMap<QString, double> lens = getLens();
     if (lens["zFar"] == zFar) return;
     lens["zFar"] = zFar;
@@ -72,14 +63,12 @@ void Camera::setZFar(double zFar)
     emit zFarChanged(zFar);
 }
 
-QMap<QString, double> Camera::getLens()
-{
+QMap<QString, double> Camera::getLens() {
     QMap<QString, double> map;
     toOsg()->getProjectionMatrixAsPerspective(map["fovy"], map["aspectRatio"], map["zNear"], map["zFar"]);
     return map;
 }
 
-void Camera::setLens(const QMap<QString, double>& lens)
-{
+void Camera::setLens(const QMap<QString, double>& lens) {
     toOsg()->setProjectionMatrixAsPerspective(lens["fovy"], lens["aspectRatio"], lens["zNear"], lens["zFar"]);
 }

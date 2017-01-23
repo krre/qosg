@@ -1,7 +1,5 @@
 #include "shape.h"
 
-
-void Shape::classBegin()
-{
+void Shape::classBegin() {
     Object::classBegin();
 }

@@ -8,8 +8,7 @@
 #include <osgText/String>
 #include <osg/Quat>
 
-class Converter
-{
+class Converter {
 public:
     static osg::Vec4 toVec4(const QColor& color);
     static QColor fromVec4(const osg::Vec4& vec4);

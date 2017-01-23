@@ -29,8 +29,7 @@ QOpenGLFramebufferObject *ViewerRenderer::createFramebufferObject(const QSize &s
     return new QOpenGLFramebufferObject(size, format);
 }
 
-Viewer::Viewer()
-{
+Viewer::Viewer() {
     setFlag(ItemHasContents, true);
     setAcceptedMouseButtons(Qt::AllButtons);
 
@@ -45,21 +44,18 @@ Viewer::Viewer()
     connect(pickHandler, SIGNAL(picked(const QString&)), this, SIGNAL(picked(const QString&)));
 }
 
-QQuickFramebufferObject::Renderer* Viewer::createRenderer() const
-{
+QQuickFramebufferObject::Renderer* Viewer::createRenderer() const {
     return new ViewerRenderer(osgViewer.get());
 }
 
-void Viewer::setSceneData(Node* sceneData)
-{
+void Viewer::setSceneData(Node* sceneData) {
     if (sceneData == this->sceneData) return;
     this->sceneData = sceneData;
     osgViewer->setSceneData(sceneData->toOsg());
     emit sceneDataChanged(sceneData);
 }
 
-Camera* Viewer::getCamera()
-{
+Camera* Viewer::getCamera() {
     if (camera.isNull()) {
         camera = QSharedPointer<Camera>(new Camera());
         camera->fromOsg(osgViewer->getCamera());
@@ -67,31 +63,27 @@ Camera* Viewer::getCamera()
     return camera.data();
 }
 
-void Viewer::setCamera(Camera *camera)
-{
+void Viewer::setCamera(Camera* camera) {
     if (this->camera == camera) return;
     this->camera = QSharedPointer<Camera>(camera);
     osgViewer->setCamera(camera->toOsg());
     emit cameraChanged(camera);
 }
 
-void Viewer::setAllowThrow(bool allowThrow)
-{
+void Viewer::setAllowThrow(bool allowThrow) {
     if (manipulator->getAllowThrow() == allowThrow) return;
     manipulator->setAllowThrow(allowThrow);
     emit allowThrowChanged(allowThrow);
 }
 
-void Viewer::setInfiniteRender(bool infiniteRender)
-{
+void Viewer::setInfiniteRender(bool infiniteRender) {
     if (m_infiniteRender == infiniteRender) return;
     m_infiniteRender = infiniteRender;
     emit infiniteRenderChanged(infiniteRender);
 }
 
 // Hack to flip texture node vertically
-QSGNode* Viewer::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData* nodeData)
-{
+QSGNode* Viewer::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData* nodeData) {
     if (!node) {
         node = QQuickFramebufferObject::updatePaintNode(node, nodeData);
         QSGSimpleTextureNode* n = static_cast<QSGSimpleTextureNode*>(node);
@@ -103,33 +95,27 @@ QSGNode* Viewer::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData*
     return QQuickFramebufferObject::updatePaintNode(node, nodeData);
 }
 
-void Viewer::wheelEvent(QWheelEvent* event)
-{
+void Viewer::wheelEvent(QWheelEvent* event) {
     osgViewer->getEventQueue()->mouseScroll(event->delta() < 0 ? osgGA::GUIEventAdapter::SCROLL_UP : osgGA::GUIEventAdapter::SCROLL_DOWN);
 }
 
-void Viewer::mouseDoubleClickEvent(QMouseEvent* event)
-{
+void Viewer::mouseDoubleClickEvent(QMouseEvent* event) {
     osgViewer->getEventQueue()->mouseDoubleButtonPress((float)event->x(), (float)event->y(), mouseButtonMask(event));
 }
 
-void Viewer::mouseMoveEvent(QMouseEvent* event)
-{
+void Viewer::mouseMoveEvent(QMouseEvent* event) {
     osgViewer->getEventQueue()->mouseMotion(event->localPos().x(), event->localPos().y());
 }
 
-void Viewer::mousePressEvent(QMouseEvent* event)
-{
+void Viewer::mousePressEvent(QMouseEvent* event) {
     osgViewer->getEventQueue()->mouseButtonPress(event->localPos().x(), event->localPos().y(), mouseButtonMask(event));
 }
 
-void Viewer::mouseReleaseEvent(QMouseEvent* event)
-{
+void Viewer::mouseReleaseEvent(QMouseEvent* event) {
     osgViewer->getEventQueue()->mouseButtonRelease(event->localPos().x(), event->localPos().y(), mouseButtonMask(event));
 }
 
-osgGA::GUIEventAdapter::MouseButtonMask Viewer::mouseButtonMask(QMouseEvent* event)
-{
+osgGA::GUIEventAdapter::MouseButtonMask Viewer::mouseButtonMask(QMouseEvent* event) {
     if (event->button() == Qt::LeftButton) {
         return osgGA::GUIEventAdapter::LEFT_MOUSE_BUTTON;
     } else if (event->button() == Qt::RightButton) {

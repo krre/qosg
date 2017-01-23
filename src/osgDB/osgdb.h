@@ -4,8 +4,7 @@
 #include <osgDB/WriteFile>
 #include "../osg/node.h"
 
-class OsgDb : public QObject
-{
+class OsgDb : public QObject {
     Q_OBJECT
 
 public:

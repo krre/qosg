@@ -3,8 +3,7 @@
 #include "../osg/drawable.h"
 #include "../converter.h"
 
-class TextBase : public Drawable
-{
+class TextBase : public Drawable {
     Q_OBJECT
     Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
     Q_PROPERTY(QColor color READ getColor WRITE setColor NOTIFY colorChanged)
