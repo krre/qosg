@@ -73,8 +73,8 @@ void Viewer::setAllowThrow(bool allowThrow) {
 }
 
 void Viewer::setInfiniteRender(bool infiniteRender) {
-    if (m_infiniteRender == infiniteRender) return;
-    m_infiniteRender = infiniteRender;
+    if (this->infiniteRender == infiniteRender) return;
+    this->infiniteRender = infiniteRender;
     emit infiniteRenderChanged(infiniteRender);
 }
 
