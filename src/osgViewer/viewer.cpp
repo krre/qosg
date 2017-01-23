@@ -9,10 +9,6 @@
 #include <osgDB/WriteFile>
 #include <osg/Camera>
 
-ViewerRenderer::ViewerRenderer(osgViewer::Viewer* osgViewer) : osgViewer(osgViewer)
-{
-}
-
 void ViewerRenderer::render() {
     QOpenGLContext::currentContext()->functions()->glUseProgram(0);
     osgViewer->frame();

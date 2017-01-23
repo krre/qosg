@@ -8,7 +8,7 @@
 
 class ViewerRenderer : public QQuickFramebufferObject::Renderer {
 public:
-    ViewerRenderer(osgViewer::Viewer* osgViewer);
+    ViewerRenderer(osgViewer::Viewer* osgViewer) : osgViewer(osgViewer) {}
     void render();
     QOpenGLFramebufferObject* createFramebufferObject(const QSize& size);
 
